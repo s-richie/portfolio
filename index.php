@@ -633,7 +633,7 @@ body:not(.dark) .scroll-top {
             </div>
         </div>
         <div class="contact-form">
-            <form action="save_contact.php" method="POST">
+            <form action="save_contact.php" method="POST" id="contact-form">
                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -647,6 +647,16 @@ body:not(.dark) .scroll-top {
             </form>
         </div>
     </section>
+
+    <!-- Success Pop-up -->
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background:rgb(5, 160, 18); padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); z-index: 1000;">
+        <p style="font-size: 1.2rem; color: #fff; text-align: center;">Your message has been received. I'll get back to you soon!</p>
+    </div>
+
+    <!-- Error Pop-up -->
+    <div id="error-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background:rgb(185, 9, 9); padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); z-index: 1000;">
+        <p id="error-message" style="font-size: 1.2rem; color:rgb(255, 255, 255); text-align: center;"></p>
+    </div>
 
     <footer class="footer">
         <p>© <script>document.write(new Date().getFullYear());</script> Suniga. All rights reserved.</p>
@@ -724,6 +734,40 @@ body:not(.dark) .scroll-top {
                 }
             });
         });
+
+        // Pop-up functions
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            setTimeout(closePopup, 3000); // Auto-close after 3 seconds
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function showErrorPopup(message) {
+            document.getElementById('error-message').textContent = message;
+            document.getElementById('error-popup').style.display = 'block';
+            setTimeout(closeErrorPopup, 3000); // Auto-close after 3 seconds
+        }
+
+        function closeErrorPopup() {
+            document.getElementById('error-popup').style.display = 'none';
+        }
+
+        // Check for success or error parameters in URL
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                showPopup();
+                document.getElementById('contact-form').reset();
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (urlParams.get('error') === 'invalid') {
+                showErrorPopup('Invalid submission. Please try again.');
+            } else if (urlParams.get('error') === 'invalid_email') {
+                showErrorPopup('Please enter a valid email address.');
+            }
+        };
     </script>
 </body>
 </html>
