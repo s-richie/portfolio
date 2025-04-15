@@ -626,8 +626,8 @@ body:not(.dark) .scroll-top {
             </div>
         </div>
         <div class="contact-form">
-            <form action="save_contact.php" method="POST" id="contact-form">
-                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                <input type="hidden" name="access_key" value="cae9d0cb-b65c-40a9-9d50-64fea31730d6">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
                 <label for="email">Your Email</label>
@@ -641,15 +641,6 @@ body:not(.dark) .scroll-top {
         </div>
     </section>
 
-    <!-- Success Pop-up -->
-    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background:rgb(5, 160, 18); padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); z-index: 1000;">
-        <p style="font-size: 1.2rem; color: #fff; text-align: center;">Your message has been received. I'll get back to you soon!</p>
-    </div>
-
-    <!-- Error Pop-up -->
-    <div id="error-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background:rgb(185, 9, 9); padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); z-index: 1000;">
-        <p id="error-message" style="font-size: 1.2rem; color:rgb(255, 255, 255); text-align: center;"></p>
-    </div>
 
     <footer class="footer">
         <p>© <script>document.write(new Date().getFullYear());</script> Suniga. All rights reserved.</p>
