@@ -6,15 +6,8 @@
     <meta name="description" content="Portfolio of Suniga, a web developer skilled in HTML, Java, and Android Studio. Explore projects like Online Enrollment Form and VenueVista.">
     <meta name="keywords" content="web developer, portfolio, HTML, Java, Android Studio, Suniga">
     <meta name="author" content="Suniga">
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Suniga | Web Developer Portfolio">
-    <meta property="og:description" content="Portfolio of Suniga, a web developer skilled in HTML, Java, and Android Studio.">
-    <meta property="og:image" content="https://yourdomain.com/img/design2.png">
-    <meta property="og:url" content="https://yourdomain.com">
     <title>Suniga | Web Developer Portfolio</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
 </head>
@@ -115,37 +108,38 @@ section {
 }
 
 .home {
-    background: url('img/circle pfp.png') no-repeat;
-    background-position: 700px 150px; /* Adjust left (first value) and top (second value) manually */
-    background-size: 400px 400px; /* Set width (first value) and height (second value) manually */
     display: flex;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 40px;
-    margin-top: 70px;
+    padding: 20px;
 }
 
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-    .home {
-        background-position: center 10%; /* Center image on smaller screens */
-        background-size: clamp(150px, 50vw, 250px); /* Smaller size for mobile */
-        padding: 1.5rem; /* Reduce padding */
-        flex-direction: column; /* Stack content vertically if needed */
-    }
-}
-
-/* Media query for very small screens */
-@media (max-width: 480px) {
-    .home {
-        background-size: clamp(100px, 40vw, 200px); /* Further reduce size */
-        padding: 1rem;
-        background-position: center 5%;
-    }
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
 }
 
 .home-content {
-    max-width: 600px;
+    flex: 1;
+    text-align: left;
+}
+
+.home-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.home-image img {
+    max-width: 300px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 10px; /* Optional: for rounded corners */
+    object-fit: cover;
 }
 
 .home-content h3 {
@@ -171,6 +165,22 @@ section {
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1.2s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-image {
+        justify-content: center;
+    }
+
+    .home-image img {
+        max-width: 200px; /* Smaller size for mobile */
+    }
 }
 
 .social-links a {
@@ -455,25 +465,6 @@ body:not(.dark) .scroll-top {
     100% { transform: translateX(0); opacity: 1; }
 }
 
-/* Pop-up Styles */
-.popup {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #971111;
-    color: #fff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    display: none;
-    z-index: 1000;
-}
-
-.popup p {
-    margin: 0;
-    font-size: 1rem;
-}
-
 @media (max-width: 992px) {
     .header {
         padding: 15px 5%;
@@ -562,14 +553,6 @@ body:not(.dark) .scroll-top {
 }
 </style>
 <body class="dark">
-    <!-- Pop-up Elements -->
-    <div id="popup" class="popup">
-        <p>Message sent successfully!</p>
-    </div>
-    <div id="error-popup" class="popup">
-        <p id="error-message">An error occurred.</p>
-    </div>
-
     <header class="header">
         <a href="#home" class="logo">Suniga</a>
         <button id="theme-toggle" aria-label="Toggle Theme">
@@ -579,27 +562,32 @@ body:not(.dark) .scroll-top {
             <i class="bx bx-menu"></i>
         </button>
         <nav class="navbar">
-            <a href="#home" class="active" style="--i: 1;">Home</a>
-            <a href="#about" style="--i: 2;">About</a>
-            <a href="#projects" style="--i: 3;">Projects</a>
-            <a href="#skills" style="--i: 4;">Skills</a>
-            <a href="#contact" style="--i: 5;">Contact</a>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="home" id="home">
-        <div class="home-content">
-            <h3>Hello, I'm</h3>
-            <h1>Suniga</h1>
-            <h3>A <span class="typed-text"></span></h3>
-            <p>College student skilled in HTML, Arduino, and web design. I built an "Online Enrollment Form" and love sketching in my free time.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/richelle.suniga.5" target="_blank" aria-label="Facebook" style="--i: 1;"><i class="bx bxl-facebook-circle"></i></a>
-                <a href="https://github.com/Savierash" target="_blank" aria-label="GitHub" style="--i: 2;"><i class="bx bxl-github"></i></a>
-                <a href="https://www.instagram.com/suniga_ash" target="_blank" aria-label="Instagram" style="--i: 3;"><i class="bx bxl-instagram-alt"></i></a>
-                <a href="https://www.tiktok.com/@not_ash.dev" target="_blank" aria-label="TikTok" style="--i: 4;"><i class="bx bxl-tiktok"></i></a>
+        <div class="home-container">
+            <div class="home-content">
+                <h3>Hello, I'm</h3>
+                <h1>Suniga</h1>
+                <h3>A <span class="typed-text"></span></h3>
+                <p>College student skilled in HTML, Arduino, and web design. I built an "Online Enrollment Form" and love sketching in my free time.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/richelle.suniga.5" target="_blank"><i class="bx bxl-facebook-circle"></i></a>
+                    <a href="https://github.com/Savierash" target="_blank"><i class="bx bxl-github"></i></a>
+                    <a href="https://www.instagram.com/suniga_ash" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
+                    <a href="https://www.tiktok.com/@not_ash.dev" target="_blank"><i class="bx bxl-tiktok"></i></a>
+                </div>
+                <a href="https://drive.google.com/file/d/1LpjFETZBrJuzfgIS0mHsdCAr7VSok32o/view?usp=sharing" class="btn" target="_blank">Download Resume</a>
             </div>
-            <a href="https://drive.google.com/file/d/1LpjFETZBrJuzfgIS0mHsdCAr7VSok32o/view?usp=sharing" class="btn" target="_blank">Download Resume</a>
+            <div class="home-image">
+                <img src="img/circle pfp.png" alt="Suniga's Photo">
+            </div>
         </div>
     </section>
 
@@ -674,9 +662,9 @@ body:not(.dark) .scroll-top {
                 <li><i class="bx bxs-phone"></i> 09202431680</li>
             </ul>
             <div class="social-links">
-                <a href="https://www.facebook.com/richelle.suniga.5" target="_blank" aria-label="Facebook" style="--i: 1;"><i class="bx bxl-facebook-circle"></i></a>
-                <a href="https://www.instagram.com/suniga_ash" target="_blank" aria-label="Instagram" style="--i: 2;"><i class="bx bxl-instagram-alt"></i></a>
-                <a href="https://github.com/Savierash" target="_blank" aria-label="GitHub" style="--i: 3;"><i class="bx bxl-github"></i></a>
+                <a href="https://www.facebook.com/richelle.suniga.5" target="_blank"><i class="bx bxl-facebook-circle"></i></a>
+                <a href="https://www.instagram.com/suniga_ash" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
+                <a href="https://github.com/Savierash" target="_blank"><i class="bx bxl-github"></i></a>
             </div>
         </div>
         <div class="contact-form">
@@ -690,10 +678,11 @@ body:not(.dark) .scroll-top {
                 <input type="text" id="subject" name="_subject" placeholder="Subject">
                 <label for="message">Your Message</label>
                 <textarea id="message" name="message" placeholder="Your Message" rows="8" required></textarea>
-                <button type="submit" class="btn" id="submit-btn">Send Message</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
     </section>
+
 
     <footer class="footer">
         <p>© <script>document.write(new Date().getFullYear());</script> Suniga. All rights reserved.</p>
@@ -714,7 +703,7 @@ body:not(.dark) .scroll-top {
         const typedElement = document.querySelector('.typed-text');
         if (typedElement) {
             new Typed('.typed-text', {
-                strings: ['Web Developer', 'Frontend', 'Backend', 'Designer', 'Programmer'],
+                strings: ['Web Developer','Frontend', 'Backend', 'Designer', 'Programmer'],
                 typeSpeed: 100,
                 backSpeed: 50,
                 loop: true
@@ -731,15 +720,15 @@ body:not(.dark) .scroll-top {
         }
 
         // Theme toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
-        const icon = themeToggleBtn?.querySelector('i');
-        if (themeToggleBtn && icon) {
+        const icon = themeToggle?.querySelector('i');
+        if (themeToggle && icon) {
             if (localStorage.getItem('theme') === 'light') {
                 body.classList.remove('dark');
                 icon.classList.replace('bx-moon', 'bx-sun');
             }
-            themeToggleBtn.addEventListener('click', () => {
+            themeToggle.addEventListener('click', () => {
                 body.classList.toggle('dark');
                 if (body.classList.contains('dark')) {
                     icon.classList.replace('bx-sun', 'bx-moon');
@@ -774,63 +763,22 @@ body:not(.dark) .scroll-top {
 
         // Pop-up functions
         function showPopup() {
-            const popup = document.getElementById('popup');
-            if (popup) {
-                popup.style.display = 'block';
-                setTimeout(() => popup.style.display = 'none', 3000);
-            }
+            document.getElementById('popup').style.display = 'block';
+            setTimeout(closePopup, 3000); // Auto-close after 3 seconds
         }
 
         function closePopup() {
-            const popup = document.getElementById('popup');
-            if (popup) popup.style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
         }
 
         function showErrorPopup(message) {
-            const errorPopup = document.getElementById('error-popup');
-            const errorMessage = document.getElementById('error-message');
-            if (errorPopup && errorMessage) {
-                errorMessage.textContent = message;
-                errorPopup.style.display = 'block';
-                setTimeout(() => errorPopup.style.display = 'none', 3000);
-            }
+            document.getElementById('error-message').textContent = message;
+            document.getElementById('error-popup').style.display = 'block';
+            setTimeout(closeErrorPopup, 3000); // Auto-close after 3 seconds
         }
 
         function closeErrorPopup() {
-            const errorPopup = document.getElementById('error-popup');
-            if (errorPopup) errorPopup.style.display = 'none';
-        }
-
-        // Form submission handling
-        const contactForm = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-        if (contactForm && submitBtn) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-
-                try {
-                    const formData = new FormData(contactForm);
-                    const response = await fetch(contactForm.action, {
-                        method: 'POST',
-                        body: formData
-                    });
-                    const result = await response.json();
-
-                    if (result.success) {
-                        showPopup();
-                        contactForm.reset();
-                    } else {
-                        showErrorPopup('Failed to send message. Please try again.');
-                    }
-                } catch (error) {
-                    showErrorPopup('Network error. Please try again later.');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                }
-            });
+            document.getElementById('error-popup').style.display = 'none';
         }
 
         // Check for success or error parameters in URL
@@ -838,7 +786,7 @@ body:not(.dark) .scroll-top {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('success') === 'true') {
                 showPopup();
-                document.getElementById('contact-form')?.reset();
+                document.getElementById('contact-form').reset();
                 window.history.replaceState({}, document.title, window.location.pathname);
             } else if (urlParams.get('error') === 'invalid') {
                 showErrorPopup('Invalid submission. Please try again.');
