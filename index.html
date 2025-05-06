@@ -218,6 +218,7 @@ body:not(.dark) .social-links a {
     background: #971111;
     color: #fff;
     border-radius: 40px;
+    border:none;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
@@ -598,7 +599,7 @@ body:not(.dark) .scroll-top {
         <div class="about-text">
             <h2>About <span>Me</span></h2>
             <h4>Web Developer</h4>
-            <p>My journey began in junior high with Arduino, igniting my passion for tech. In college, I created an "Online Enrollment Form" using HTML and explored Java and Android Studio for front-end development.</p>
+            <p>My journey began in junior high with Arduino, igniting my passion for tech. In college, I created an Online Enrollment Form, Dama Master, VenueVista as Frontend, and Fetch&Chill as Frontend and Backend.</p>
             <a href="#contact" class="btn">Connect with Me</a>
         </div>
     </section>
@@ -690,21 +691,14 @@ body:not(.dark) .scroll-top {
         <a href="#home" class="scroll-top" aria-label="Scroll to top"><i class="bx bx-up-arrow-alt"></i></a>
     </footer>
 
-    <noscript>
-        <style>
-            .navbar { display: flex !important; }
-            .typed-text::after { content: 'Web Developer'; }
-            .scroll-top { display: none; }
-        </style>
-        <p style="text-align: center; color: #fff;">Please enable JavaScript for the best experience.</p>
-    </noscript>
+    
 
     <script>
         // Typed.js
         const typedElement = document.querySelector('.typed-text');
         if (typedElement) {
             new Typed('.typed-text', {
-                strings: ['Web Developer','Frontend', 'Backend', 'Designer', 'Programmer'],
+                strings: ['Web Developer','Frontend', 'Backend', 'Programmer'],
                 typeSpeed: 100,
                 backSpeed: 50,
                 loop: true
