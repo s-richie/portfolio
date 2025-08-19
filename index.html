@@ -283,7 +283,8 @@ body:not(.dark) .btn {
 }
 
 .project-grid,
-.skill-grid {
+.skill-grid,
+.certificate-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
@@ -329,11 +330,10 @@ body:not(.dark) .skill-card {
     margin-bottom: 20px;
 }
 
-.certificates {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+.cert-span span {
+    color: #971111;
 }
+
 .certificate-card {
    background: #1a1a1a;
     padding: 30px;
@@ -342,18 +342,80 @@ body:not(.dark) .skill-card {
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.certificate-image {
-    margin-bottom: 10px;
-}
-.certificate-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
+
 .certificate-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(151, 17, 17, 0.5);
 }
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+  text-align: center;
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close:hover {
+  color: #ff4444;
+}
+
+/* Navigation Arrows */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.3s;
+  user-select: none;
+  border-radius: 3px;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover {
+  color: #ff4444;
+}
+
 
 .contact {
     display: grid;
@@ -681,23 +743,33 @@ body:not(.dark) .scroll-top {
     </section>
 
     <section class="certificates" id="certificates">
-        <h2 class="section-title">My <span>Certificates</span></h2>
-        <div class="certificates">
-            <div class="certificate-card">
-                <div class="certificate-image">
-                    <img src="img/cert1.jpg" alt="Certificate 1">
-                </div>
-                <h3>Design Thinking Workshop:Exploring Research Innovation Through the Use of IT Solution</h3>
-                <p>This workshop provide valuable insights into the application of design thinking principles to enhance research forum processes,fostering innovation,collaboration, and impactful results.</p>
-            </div>
-            <div class="certificate-card">
-                <div class="certificate-image">
-                    <img src="img/cert2.jpg" alt="Certificate 2">
-                </div>
-                <h3>Site Success Ladder</h3>
-                <p>for achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.</p>
-            </div>
-    </section>
+    <h2 class="section-title">My <span>Certificates</span></h2>
+    <div class="certificate-grid">
+        <div class="certificate-card">
+            <h3 class="cert-span"><span>Design Thinking Workshop: Exploring Research Innovation Through the Use of IT Solution</span></h3>
+            <p>This workshop provided valuable insights into the application of design thinking principles to enhance research forum processes, fostering innovation, collaboration, and impactful results.</p>
+            <button class="btn view-btn" data-img="img/cert1.jpg">View Image</button>
+        </div>
+        <div class="certificate-card">
+            <h3 class="cert-span"><span>Site Success Ladder</span></h3>
+            <p>For achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.</p>
+            <button class="btn view-btn" data-img="img/cert2.jpg">View Image</button>
+        </div>
+        <!-- You can add more certificates here the same way -->
+    </div>
+</section>
+
+<!-- Image Modal -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+
+  <!-- Navigation Arrows -->
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+
+
 
     <section class="contact" id="contact">
         <div class="contact-text">
@@ -834,6 +906,53 @@ body:not(.dark) .scroll-top {
                 showErrorPopup('Please enter a valid email address.');
             }
         };
+
+        // Image Modal Script with Gallery Navigation
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.querySelector(".modal .close");
+    const prevBtn = document.querySelector(".modal .prev");
+    const nextBtn = document.querySelector(".modal .next");
+
+    const images = Array.from(document.querySelectorAll(".view-btn")).map(btn => btn.dataset.img);
+    let currentIndex = 0;
+
+    document.querySelectorAll(".view-btn").forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = btn.dataset.img;
+        currentIndex = index;
+    });
+    });
+
+    function showImage(index) {
+        if (index < 0) index = images.length - 1;
+        if (index >= images.length) index = 0;
+    currentIndex = index;
+    modalImg.src = images[currentIndex];
+    }
+
+    if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+        showImage(currentIndex - 1);
+    });
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+        showImage(currentIndex + 1);
+    });
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+    }
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+        modal.style.display = "none";
+    }
+    });
+
     </script>
 </body>
 </html>
