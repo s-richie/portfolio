@@ -329,6 +329,32 @@ body:not(.dark) .skill-card {
     margin-bottom: 20px;
 }
 
+.certificates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.certificate-card {
+   background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.certificate-image {
+    margin-bottom: 10px;
+}
+.certificate-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.certificate-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(151, 17, 17, 0.5);
+}
+
 .contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -652,6 +678,25 @@ body:not(.dark) .scroll-top {
                 <h4>Kotlin </h4>
             </div>
         </div>
+    </section>
+
+    <section class="certificates" id="certificates">
+        <h2 class="section-title">My <span>Certificates</span></h2>
+        <div class="certificates">
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="img/cert1.jpg" alt="Certificate 1">
+                </div>
+                <h3>Design Thinking Workshop:Exploring Research Innovation Through the Use of IT Solution</h3>
+                <p>This workshop provide valuable insights into the application of design thinking principles to enhance research forum processes,fostering innovation,collaboration, and impactful results.</p>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="img/cert2.jpg" alt="Certificate 2">
+                </div>
+                <h3>Site Success Ladder</h3>
+                <p>for achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.</p>
+            </div>
     </section>
 
     <section class="contact" id="contact">
