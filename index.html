@@ -9,8 +9,10 @@
     <title>Suniga | Web Developer Portfolio</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
 </head>
+
 <style>
 * {
     margin: 0;
@@ -136,9 +138,9 @@ section {
 }
 
 .home-image img {
-    max-width: 400px; /* Adjust size as needed */
+    max-width: 400px;
     height: auto;
-    border-radius: 10px; /* Optional: for rounded corners */
+    border-radius: 10px;
     object-fit: cover;
 }
 
@@ -167,19 +169,16 @@ section {
     animation-delay: 1.2s;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .home-container {
         flex-direction: column;
         text-align: center;
     }
-
     .home-image {
         justify-content: center;
     }
-
     .home-image img {
-        max-width: 200px; /* Smaller size for mobile */
+        max-width: 200px;
     }
 }
 
@@ -222,7 +221,7 @@ body:not(.dark) .social-links a {
     background: #971111;
     color: #fff;
     border-radius: 40px;
-    border:none;
+    border: none;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
@@ -231,6 +230,7 @@ body:not(.dark) .social-links a {
     opacity: 0;
     animation: slideTop 1s ease forwards;
     animation-delay: 1.5s;
+    cursor: pointer;
 }
 
 body:not(.dark) .btn {
@@ -334,12 +334,18 @@ body:not(.dark) .skill-card {
     margin-bottom: 20px;
 }
 
+/* Project card btn overrides (no animation) */
+.project-card .btn {
+    opacity: 1;
+    animation: none;
+}
+
 .cert-span span {
     color: #971111;
 }
 
 .certificate-card {
-   background: #1a1a1a;
+    background: #1a1a1a;
     padding: 30px;
     border-radius: 15px;
     text-align: center;
@@ -352,76 +358,239 @@ body:not(.dark) .skill-card {
     box-shadow: 0 10px 20px rgba(151, 17, 17, 0.5);
 }
 
-/* Modal Background */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  padding-top: 80px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
-  text-align: center;
+/* ── Certificate Image Modal ── */
+.cert-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    text-align: center;
 }
 
-/* Modal Content (Image) */
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255,255,255,0.5);
-  animation: zoomIn 0.3s;
+.cert-modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    animation: zoomIn 0.3s;
 }
 
 @keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-/* Close Button */
-.close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.cert-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
-.close:hover {
-  color: #ff4444;
-}
+.cert-close:hover { color: #ff4444; }
 
-/* Navigation Arrows */
 .prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 40px;
-  transition: 0.3s;
-  -webkit-user-select: none;
-  user-select: none;
-  border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 40px;
+    transition: 0.3s;
+    user-select: none;
+    border-radius: 3px;
 }
-
 .prev { left: 20px; }
 .next { right: 20px; }
+.prev:hover, .next:hover { color: #ff4444; }
 
-.prev:hover, .next:hover {
-  color: #ff4444;
+/* ── Project Detail Modal ── */
+.proj-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.proj-overlay.open { display: flex; }
+
+.proj-modal {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 560px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    animation: zoomIn 0.25s ease;
 }
 
+body:not(.dark) .proj-modal {
+    background: #fff;
+    color: #333;
+}
 
+.proj-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 28px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #aaa;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.proj-modal-close:hover { color: #971111; }
+
+/* image gallery inside project modal */
+.proj-gallery {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    background: #111;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proj-gallery img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: none;
+}
+
+.proj-gallery img.active { display: block; }
+
+.proj-gallery-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 2.5rem;
+    color: #888;
+    font-size: 0.9rem;
+}
+.proj-gallery-placeholder i { font-size: 3rem; color: #971111; }
+
+/* gallery arrows */
+.gallery-prev, .gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    font-size: 1.4rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 2;
+}
+.gallery-prev { left: 8px; }
+.gallery-next { right: 8px; }
+.gallery-prev:hover, .gallery-next:hover { background: #971111; }
+
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+.gallery-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #555;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+}
+.gallery-dot.active { background: #971111; }
+
+.proj-modal h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+}
+body:not(.dark) .proj-modal h2 { color: #333; }
+
+.proj-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 14px;
+}
+
+.tech-badge {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #ccc;
+}
+
+body:not(.dark) .tech-badge {
+    background: #f0f0f0;
+    border-color: #ddd;
+    color: #555;
+}
+
+.proj-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #ccc;
+    margin-bottom: 1.2rem;
+}
+body:not(.dark) .proj-desc { color: #555; }
+
+.proj-actions { display: flex; gap: 10px; }
+
+.btn-github {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #971111;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-github:hover {
+    background: #7e0303;
+    box-shadow: 0 0 15px #971111;
+}
+
+/* ── Contact ── */
 .contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -543,27 +712,21 @@ body:not(.dark) .scroll-top {
     0% { transform: translateX(-100px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
-
 @keyframes slideTop {
     0% { transform: translateY(100px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
-
 @keyframes slideBottom {
     0% { transform: translateY(-100px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
-
 @keyframes slideLeft {
     0% { transform: translateX(100px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
 @media (max-width: 992px) {
-    .header {
-        padding: 15px 5%;
-    }
-
+    .header { padding: 15px 5%; }
     .navbar {
         display: none;
         position: absolute;
@@ -575,77 +738,28 @@ body:not(.dark) .scroll-top {
         padding: 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
-
-    body:not(.dark) .navbar {
-        background: #fff;
-    }
-
-    .navbar.active {
-        display: flex;
-    }
-
-    .navbar a {
-        margin: 10px 0;
-        font-size: 1.5rem;
-    }
-
-    #toggle-btn {
-        display: block;
-    }
-
-    .about,
-    .contact {
-        grid-template-columns: 1fr;
-    }
-
-    .home-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .home-content h3 {
-        font-size: 1.5rem;
-    }
-
-    .home-content p {
-        font-size: 1rem;
-    }
+    body:not(.dark) .navbar { background: #fff; }
+    .navbar.active { display: flex; }
+    .navbar a { margin: 10px 0; font-size: 1.5rem; }
+    #toggle-btn { display: block; }
+    .about, .contact { grid-template-columns: 1fr; }
+    .home-content h1 { font-size: 2.5rem; }
+    .home-content h3 { font-size: 1.5rem; }
+    .home-content p { font-size: 1rem; }
 }
 
 @media (max-width: 576px) {
-    section {
-        padding: 80px 5%;
-    }
-
-    .home-content h1 {
-        font-size: 2rem;
-    }
-
-    .home-content h3 {
-        font-size: 1.2rem;
-    }
-
-    .home-content p {
-        font-size: 0.9rem;
-    }
-
-    .about-text h2 {
-        font-size: 2rem;
-    }
-
-    .contact-text h2 {
-        font-size: 2.5rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .project-card,
-    .skill-card {
-        padding: 20px;
-    }
+    section { padding: 80px 5%; }
+    .home-content h1 { font-size: 2rem; }
+    .home-content h3 { font-size: 1.2rem; }
+    .home-content p { font-size: 0.9rem; }
+    .about-text h2 { font-size: 2rem; }
+    .contact-text h2 { font-size: 2.5rem; }
+    .section-title { font-size: 2rem; }
+    .project-card, .skill-card { padding: 20px; }
 }
 </style>
+
 <body class="dark">
     <header class="header">
         <a href="#home" class="logo">Suniga</a>
@@ -697,6 +811,7 @@ body:not(.dark) .scroll-top {
         </div>
     </section>
 
+<!-- ── Projects Section ── -->
     <section class="projects" id="projects">
         <h2 class="section-title">My <span>Projects</span></h2>
         <div class="project-grid">
@@ -704,29 +819,56 @@ body:not(.dark) .scroll-top {
                 <i class="bx bx-code"></i>
                 <h3>Online Enrollment Form</h3>
                 <p>A website for Upang enabling online enrollment, file submission, and messaging.</p>
-                <a href="https://github.com/Savierash/online-enrollment-form" class="btn" target="_blank" rel="noopener">Learn More</a>
+                <button class="btn" onclick="openProjModal('enrollment')">Learn More</button>
             </div>
             <div class="project-card">
                 <i class="bx bxs-chess"></i>
                 <h3>Chess</h3>
                 <p>A two-player chess app displaying winners, losers, and scores.</p>
-                <a href="https://github.com/Savierash/chess" class="btn" target="_blank" rel="noopener">Learn More</a>
+                <button class="btn" onclick="openProjModal('chess')">Learn More</button>
             </div>
             <div class="project-card">
                 <i class="bx bxs-book"></i>
                 <h3>VenueVista</h3>
                 <p>An Android app for event booking with category, location, and date selection.</p>
-                <a href="https://github.com/Savierash/VenueVista" class="btn" target="_blank" rel="noopener">Learn More</a>
+                <button class="btn" onclick="openProjModal('venuevista')">Learn More</button>
             </div>
             <div class="project-card">
-                <i class="bx bxs-book"></i>
-                <h3>Fetch&Chill</h3>
+                <i class="bx bxs-dog"></i>
+                <h3>Fetch&amp;Chill</h3>
                 <p>An app for pet parents to monitor health and grooming.</p>
-                <a href="https://github.com/Savierash/FetchChill" class="btn" target="_blank" rel="noopener">Learn More</a>
+                <button class="btn" onclick="openProjModal('fetchchill')">Learn More</button>
+            </div>
+            <div class="project-card">
+                <i class="bx bx-laptop"></i>
+                <h3>OpenPC</h3>
+                <p>A web-based application system designed to assist computer laboratory auditors in effectively monitoring and managing computer units.</p>
+                <button class="btn" onclick="openProjModal('openpc')">Learn More</button>
             </div>
         </div>
     </section>
 
+    <!-- ── Project Detail Modal ── -->
+    <div class="proj-overlay" id="proj-overlay" onclick="handleProjOverlay(event)">
+        <div class="proj-modal" id="proj-modal">
+            <button class="proj-modal-close" onclick="closeProjModal()">&#215;</button>
+
+            <!-- Image gallery -->
+            <div class="proj-gallery" id="proj-gallery"></div>
+            <div class="gallery-dots" id="gallery-dots"></div>
+
+            <h2 id="proj-title"></h2>
+            <div class="proj-tech" id="proj-tech"></div>
+            <p class="proj-desc" id="proj-desc"></p>
+            <div class="proj-actions">
+                <a id="proj-github" class="btn-github" href="#" target="_blank" rel="noopener">
+                    <i class="bx bxl-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Skills ── -->
     <section class="skills" id="skills">
         <h2 class="section-title">My <span>Skills</span></h2>
         <div class="skill-grid">
@@ -737,53 +879,52 @@ body:not(.dark) .scroll-top {
             <div class="skill-card">
                 <i class="bx bxl-java"></i>
                 <h3>Web Development</h3>
-                <h4>Front-end & Back-end</h4>
+                <h4>Front-end &amp; Back-end</h4>
             </div>
             <div class="skill-card">
                 <i class="bx bxl-android"></i>
                 <h3>Android Studio</h3>
-                <h4>Kotlin </h4>
+                <h4>Kotlin</h4>
             </div>
         </div>
     </section>
 
+    <!-- ── Certificates ── -->
     <section class="certificates" id="certificates">
-    <h2 class="section-title">My <span>Certificates</span></h2>
-    <div class="certificate-grid">
-        <div class="certificate-card">
-            <h3 class="cert-span"><span>Design Thinking Workshop: Exploring Research Innovation Through the Use of IT Solution</span></h3>
-            <p>This workshop provided valuable insights into the application of design thinking principles to enhance research forum processes, fostering innovation, collaboration, and impactful results.</p>
-            <button class="btn view-btn" data-img="img/cert1.jpg">View Image</button>
+        <h2 class="section-title">My <span>Certificates</span></h2>
+        <div class="certificate-grid">
+            <div class="certificate-card">
+                <h3 class="cert-span"><span>Design Thinking Workshop: Exploring Research Innovation Through the Use of IT Solution</span></h3>
+                <p>This workshop provided valuable insights into the application of design thinking principles to enhance research forum processes, fostering innovation, collaboration, and impactful results.</p>
+                <button class="btn view-btn" data-img="img/cert1.jpg">View Image</button>
+            </div>
+            <div class="certificate-card">
+                <h3 class="cert-span"><span>Site Success Ladder</span></h3>
+                <p>For achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.</p>
+                <button class="btn view-btn" data-img="img/cert2.jpg">View Image</button>
+            </div>
+            <div class="certificate-card">
+                <h3 class="cert-span"><span>Site Success Ladder</span></h3>
+                <p>For achieving and completing the Level 2 Requirement last A.Y. 2024-2025 during the CITE Success Ladder 2025.</p>
+                <button class="btn view-btn" data-img="img/cert3.jpg">View Image</button>
+            </div>
+            <div class="certificate-card">
+                <h3 class="cert-span"><span>Capture the Flag</span></h3>
+                <p>For actively participating in the "Capture the Flag: Basic Training Seminar" held on September 29, 2024 at PHINMA-UPang.</p>
+                <button class="btn view-btn" data-img="img/cert4.jpg">View Image</button>
+            </div>
         </div>
-        <div class="certificate-card">
-            <h3 class="cert-span"><span>Site Success Ladder</span></h3>
-            <p>For achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.</p>
-            <button class="btn view-btn" data-img="img/cert2.jpg">View Image</button>
-        </div>
-        <div class="certificate-card">
-            <h3 class="cert-span"><span>Site Success Ladder</span></h3>
-            <p>For achieving and completing the Level 2 Requirement last A.Y. 2024-2025 during the CITE Success Ladder 2025.</p>
-            <button class="btn view-btn" data-img="img/cert3.jpg">View Image</button>
-        </div>
-        <div class="certificate-card">
-            <h3 class="cert-span"><span>Capture the Flag</span></h3>
-            <p>for actively participating in the "Capture the Flag: Basic Training Seminar" held on September 29, 2024 at PHINMA-UPang.</p>
-            <button class="btn view-btn" data-img="img/cert4.jpg">View Image</button>
-        </div>
-</section>
+    </section>
 
-<!-- Image Modal -->
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
+    <!-- ── Certificate Image Modal ── -->
+    <div id="certModal" class="cert-modal">
+        <span class="cert-close">&times;</span>
+        <img class="cert-modal-content" id="certModalImg">
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
 
-  <!-- Navigation Arrows -->
-  <a class="prev">&#10094;</a>
-  <a class="next">&#10095;</a>
-</div>
-
-
-
+    <!-- ── Contact ── -->
     <section class="contact" id="contact">
         <div class="contact-text">
             <h2>Contact <span>Me</span></h2>
@@ -815,157 +956,228 @@ body:not(.dark) .scroll-top {
         </div>
     </section>
 
-
     <footer class="footer">
         <p>© <script>document.write(new Date().getFullYear());</script> Suniga. All rights reserved.</p>
         <a href="#home" class="scroll-top" aria-label="Scroll to top"><i class="bx bx-up-arrow-alt"></i></a>
     </footer>
 
-    
-
     <script>
-        // Typed.js
-        const typedElement = document.querySelector('.typed-text');
-        if (typedElement) {
-            new Typed('.typed-text', {
-                strings: ['Web Developer','Frontend', 'Backend', 'Programmer','Computer Security'],
-                typeSpeed: 100,
-                backSpeed: 50,
-                loop: true
-            });
-        }
-
-        // Navbar toggle
-        const toggleBtn = document.getElementById('toggle-btn');
-        const navbar = document.querySelector('.navbar');
-        if (toggleBtn && navbar) {
-            toggleBtn.addEventListener('click', () => {
-                navbar.classList.toggle('active');
-            });
-        }
-
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = themeToggle?.querySelector('i');
-        if (themeToggle && icon) {
-            if (localStorage.getItem('theme') === 'light') {
-                body.classList.remove('dark');
-                icon.classList.replace('bx-moon', 'bx-sun');
-            }
-            themeToggle.addEventListener('click', () => {
-                body.classList.toggle('dark');
-                if (body.classList.contains('dark')) {
-                    icon.classList.replace('bx-sun', 'bx-moon');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    icon.classList.replace('bx-moon', 'bx-sun');
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-        }
-
-        // Scroll to top
-        const scrollTop = document.querySelector('.scroll-top');
-        if (scrollTop) {
-            window.addEventListener('scroll', () => {
-                scrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
-            });
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('.navbar a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const target = document.getElementById(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    if (navbar) navbar.classList.remove('active');
-                }
-            });
+    // ── Typed.js ──
+    const typedElement = document.querySelector('.typed-text');
+    if (typedElement) {
+        new Typed('.typed-text', {
+            strings: ['Web Developer','Frontend', 'Backend', 'Programmer','Computer Security'],
+            typeSpeed: 100,
+            backSpeed: 50,
+            loop: true
         });
+    }
 
-        // Pop-up functions
-        function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-            setTimeout(closePopup, 3000); // Auto-close after 3 seconds
+    // ── Navbar toggle ──
+    const toggleBtn = document.getElementById('toggle-btn');
+    const navbar = document.querySelector('.navbar');
+    if (toggleBtn && navbar) {
+        toggleBtn.addEventListener('click', () => navbar.classList.toggle('active'));
+    }
+
+    // ── Theme toggle ──
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const icon = themeToggle?.querySelector('i');
+    if (themeToggle && icon) {
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.remove('dark');
+            icon.classList.replace('bx-moon', 'bx-sun');
         }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        function showErrorPopup(message) {
-            document.getElementById('error-message').textContent = message;
-            document.getElementById('error-popup').style.display = 'block';
-            setTimeout(closeErrorPopup, 3000); // Auto-close after 3 seconds
-        }
-
-        function closeErrorPopup() {
-            document.getElementById('error-popup').style.display = 'none';
-        }
-
-        // Check for success or error parameters in URL
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') {
-                showPopup();
-                document.getElementById('contact-form').reset();
-                window.history.replaceState({}, document.title, window.location.pathname);
-            } else if (urlParams.get('error') === 'invalid') {
-                showErrorPopup('Invalid submission. Please try again.');
-            } else if (urlParams.get('error') === 'invalid_email') {
-                showErrorPopup('Please enter a valid email address.');
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                icon.classList.replace('bx-sun', 'bx-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('bx-moon', 'bx-sun');
+                localStorage.setItem('theme', 'light');
             }
-        };
+        });
+    }
 
-        // Image Modal Script with Gallery Navigation
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.querySelector(".modal .close");
-    const prevBtn = document.querySelector(".modal .prev");
-    const nextBtn = document.querySelector(".modal .next");
+    // ── Scroll to top ──
+    const scrollTop = document.querySelector('.scroll-top');
+    if (scrollTop) {
+        window.addEventListener('scroll', () => {
+            scrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+        });
+    }
 
-    const images = Array.from(document.querySelectorAll(".view-btn")).map(btn => btn.dataset.img);
-    let currentIndex = 0;
+    // ── Smooth scrolling ──
+    document.querySelectorAll('.navbar a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                if (navbar) navbar.classList.remove('active');
+            }
+        });
+    });
+
+    // ── Certificate Image Modal ──
+    const certModal = document.getElementById("certModal");
+    const certModalImg = document.getElementById("certModalImg");
+    const certCloseBtn = document.querySelector(".cert-close");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+
+    const certImages = Array.from(document.querySelectorAll(".view-btn")).map(btn => btn.dataset.img);
+    let certCurrentIndex = 0;
 
     document.querySelectorAll(".view-btn").forEach((btn, index) => {
         btn.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = btn.dataset.img;
-        currentIndex = index;
-    });
+            certModal.style.display = "block";
+            certModalImg.src = btn.dataset.img;
+            certCurrentIndex = index;
+        });
     });
 
-    function showImage(index) {
-        if (index < 0) index = images.length - 1;
-        if (index >= images.length) index = 0;
-    currentIndex = index;
-    modalImg.src = images[currentIndex];
+    function showCertImage(index) {
+        if (index < 0) index = certImages.length - 1;
+        if (index >= certImages.length) index = 0;
+        certCurrentIndex = index;
+        certModalImg.src = certImages[certCurrentIndex];
     }
 
-    if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-        showImage(currentIndex - 1);
-    });
-    }
-    if (nextBtn) {
-        nextBtn.addEventListener("click", () => {
-        showImage(currentIndex + 1);
-    });
-    }
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-    }
+    if (prevBtn) prevBtn.addEventListener("click", () => showCertImage(certCurrentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => showCertImage(certCurrentIndex + 1));
+    if (certCloseBtn) certCloseBtn.addEventListener("click", () => certModal.style.display = "none");
     window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-        modal.style.display = "none";
-    }
+        if (e.target === certModal) certModal.style.display = "none";
     });
 
+    // ── Project Detail Modal ──
+    const projectData = {
+        enrollment: {
+            title: "Online Enrollment Form",
+            icon: "bx bx-code",
+            images: ["img/online-enrollment.png"],  
+            tech: ["HTML", "CSS", "JavaScript", "PHP"],
+            desc: "A full-featured web application built for Upang College that allows students to enroll online. The system supports document and file submission, real-time messaging between students and administrators, and streamlines the entire enrollment workflow digitally — eliminating the need for students to visit campus just to enroll.",
+            github: "https://github.com/Savierash/online-enrollment-form"
+        },
+        chess: {
+            title: "Chess",
+            icon: "bx bxs-chess",
+            images: ["img/dama.png"],  
+            tech: ["Java", "OOP", "Game Logic", "Swing UI"],
+            desc: "A two-player chess application that enforces all standard chess rules — from castling to en passant. It tracks game results including winners, losers, and cumulative scores, making it great for competitive play between two users on the same device.",
+            github: "https://github.com/Savierash/chess"
+        },
+        venuevista: {
+            title: "VenueVista",
+            icon: "bx bxs-book",
+            images: ["img/mobile1.jpg", "img/mobile2.jpg", "img/mobile3.jpg"],  
+            tech: ["Android", "Kotlin", "Firebase", "XML"],
+            desc: "An Android mobile app that simplifies event venue booking. Users can browse and filter venues by category, location, and preferred date. The app provides a smooth, intuitive booking experience designed for event organizers and individuals looking for the perfect venue.",
+            github: "https://github.com/Savierash/VenueVista"
+        },
+        fetchchill: {
+            title: "Fetch&Chill",
+            icon: "bx bxs-dog",
+            images: ["img/fetchill2.png", "img/fetchill1.png"],  
+            tech: ["Android", "Kotlin", "Firebase", "Health Tracking"],
+            desc: "A dedicated mobile app for pet parents to keep track of their pets' health records, grooming schedules, vet appointments, and wellness milestones — all in one convenient place. Built as both Frontend and Backend developer.",
+            github: "https://github.com/Savierash/FetchChill"
+        },
+        openpc: {
+            title: "OpenPC",
+            icon: "bx bxs-laptop",
+            images: ["img/openpc.png", "img/openpc2.png"],  
+            tech: ["Web App", "HTML", "CSS", "JavaScript", "PHP"],
+            desc: "A web-based application system designed to assist computer laboratory auditors in effectively monitoring and managing computer units. The system provides real-time tracking of computer status, making lab audits faster, more accurate, and paperless.",
+            github: "https://github.com/Savierash"
+        }
+    };
+
+    let galleryIndex = 0;
+    let currentImages = [];
+
+    function openProjModal(key) {
+        const p = projectData[key];
+        document.getElementById('proj-title').textContent = p.title;
+        document.getElementById('proj-desc').textContent = p.desc;
+        document.getElementById('proj-github').href = p.github;
+
+        // Tech badges
+        document.getElementById('proj-tech').innerHTML =
+            p.tech.map(t => `<span class="tech-badge">${t}</span>`).join('');
+
+        // Gallery
+        const gallery = document.getElementById('proj-gallery');
+        const dotsWrap = document.getElementById('gallery-dots');
+        currentImages = p.images || [];
+        galleryIndex = 0;
+
+        if (currentImages.length > 0) {
+            let imgs = currentImages.map((src, i) =>
+                `<img src="${src}" alt="${p.title} screenshot ${i+1}" class="${i === 0 ? 'active' : ''}">`
+            ).join('');
+
+            let arrows = currentImages.length > 1
+                ? `<button class="gallery-prev" onclick="galleryNav(-1)">&#10094;</button>
+                   <button class="gallery-next" onclick="galleryNav(1)">&#10095;</button>`
+                : '';
+
+            gallery.innerHTML = imgs + arrows;
+
+            // dots
+            dotsWrap.innerHTML = currentImages.length > 1
+                ? currentImages.map((_, i) =>
+                    `<button class="gallery-dot ${i === 0 ? 'active' : ''}" onclick="galleryGoTo(${i})"></button>`
+                  ).join('')
+                : '';
+        } else {
+            gallery.innerHTML = `
+                <div class="proj-gallery-placeholder">
+                    <i class="${p.icon}"></i>
+                    <span>Screenshots coming soon</span>
+                </div>`;
+            dotsWrap.innerHTML = '';
+        }
+
+        document.getElementById('proj-overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function galleryNav(dir) {
+        galleryGoTo(galleryIndex + dir);
+    }
+
+    function galleryGoTo(index) {
+        const imgs = document.querySelectorAll('#proj-gallery img');
+        const dots = document.querySelectorAll('.gallery-dot');
+        if (!imgs.length) return;
+        if (index < 0) index = imgs.length - 1;
+        if (index >= imgs.length) index = 0;
+        imgs[galleryIndex].classList.remove('active');
+        if (dots[galleryIndex]) dots[galleryIndex].classList.remove('active');
+        galleryIndex = index;
+        imgs[galleryIndex].classList.add('active');
+        if (dots[galleryIndex]) dots[galleryIndex].classList.add('active');
+    }
+
+    function closeProjModal() {
+        document.getElementById('proj-overlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function handleProjOverlay(e) {
+        if (e.target === document.getElementById('proj-overlay')) closeProjModal();
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeProjModal();
+    });
     </script>
+
 </body>
 </html>
