@@ -702,6 +702,40 @@ body:not(.dark) .contact-form textarea {
     opacity: 1;
 }
 
+/* ── Notification Toast ── */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    border-left: 4px solid #971111;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success { border-left-color: #22c55e; }
+.toast.error   { border-left-color: #ef4444; }
+.toast i { font-size: 1.2rem; }
+.toast.success i { color: #22c55e; }
+.toast.error i   { color: #ef4444; }
+
 .footer {
     text-align: center;
     padding: 20px;
@@ -999,7 +1033,7 @@ body:not(.dark) .scroll-top {
             </div>
         </div>
         <div class="contact-form">
-            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="cae9d0cb-b65c-40a9-9d50-64fea31730d6">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1009,10 +1043,15 @@ body:not(.dark) .scroll-top {
                 <input type="text" id="subject" name="_subject" placeholder="Subject">
                 <label for="message">Your Message</label>
                 <textarea id="message" name="message" placeholder="Your Message" rows="8" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
+                <button type="submit" class="btn" id="submit-btn">Send Message</button>
             </form>
         </div>
     </section>
+
+    <div class="toast" id="toast">
+                <i class="bx" id="toast-icon"></i>
+                <span id="toast-msg"></span>
+            </div>
 
     <footer class="footer">
         <p>© <script>document.write(new Date().getFullYear());</script> Suniga. All rights reserved.</p>
@@ -1240,6 +1279,55 @@ body:not(.dark) .scroll-top {
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeProjModal();
     });
+
+    // ── Contact Form with Toast Notification ──
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    const toastIcon = document.getElementById('toast-icon');
+
+    toastMsg.textContent = message;
+    toast.className = `toast ${type}`;
+    toastIcon.className = `bx ${type === 'success' ? 'bx-check-circle' : 'bx-x-circle'}`;
+
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(contactForm);
+        formData.append('access_key', 'cae9d0cb-b65c-40a9-9d50-64fea31730d6');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                showToast('Message sent! I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+            } else {
+                showToast('Something went wrong. Please try again.', 'error');
+            }
+        } catch (err) {
+            showToast('Network error. Please check your connection.', 'error');
+        }
+
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+    });
+}
     </script>
 
 </body>
