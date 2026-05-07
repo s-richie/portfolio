@@ -363,7 +363,6 @@ body:not(.dark) .skill-card {
     display: none;
     position: fixed;
     z-index: 999;
-    padding-top: 80px;
     left: 0;
     top: 0;
     width: 100%;
@@ -371,12 +370,23 @@ body:not(.dark) .skill-card {
     overflow: auto;
     background-color: rgba(0,0,0,0.9);
     text-align: center;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 60px 20px 20px;
+}
+
+.cert-modal[style*="display: block"] {
+    display: flex !important;
 }
 
 .cert-modal-content {
     margin: auto;
     display: block;
-    max-width: 80%;
+    width: 90%;
+    max-width: 700px;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255,255,255,0.5);
     animation: zoomIn 0.3s;
@@ -476,15 +486,34 @@ body:not(.dark) .proj-modal {
     justify-content: center;
 }
 
-.proj-gallery img {
+/* mobile-style portrait frame */
+.proj-gallery img.mobile-view {
+    width: auto;
+    max-width: 220px;
+    max-height: 420px;
+    object-fit: contain;
+    border-radius: 24px;
+    border: 6px solid #333;
+    box-shadow: 0 0 0 2px #555, 0 10px 30px rgba(0,0,0,0.5);
+    margin: 0 auto;
+}
+
+.proj-gallery.mobile-frame {
+    background: #0a0a0a;
+    min-height: 440px;
+    padding: 16px 0;
+    flex-direction: column;
+}
+.proj-gallery img { display: none; }   
+.proj-gallery img.active { display: block; }
+
+/* default (non-mobile) active image */
+.proj-gallery img.active:not(.mobile-view) {
     width: 100%;
     max-height: 260px;
     object-fit: cover;
     border-radius: 10px;
-    display: none;
 }
-
-.proj-gallery img.active { display: block; }
 
 .proj-gallery-placeholder {
     display: flex;
@@ -496,6 +525,7 @@ body:not(.dark) .proj-modal {
     font-size: 0.9rem;
 }
 .proj-gallery-placeholder i { font-size: 3rem; color: #971111; }
+
 
 /* gallery arrows */
 .gallery-prev, .gallery-next {
@@ -758,6 +788,29 @@ body:not(.dark) .scroll-top {
     .contact-text h2 { font-size: 2.5rem; }
     .section-title { font-size: 2rem; }
     .project-card, .skill-card { padding: 20px; }
+}
+
+@media (max-width: 768px) {
+    .cert-modal-content {
+        width: 95%;
+        max-width: 100%;
+    }
+    .cert-close {
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+    }
+    .prev, .next {
+        font-size: 26px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cert-modal-content {
+        width: 98%;
+        border-radius: 6px;
+    }
 }
 </style>
 
@@ -1081,9 +1134,10 @@ body:not(.dark) .scroll-top {
             title: "VenueVista",
             icon: "bx bxs-book",
             images: ["img/mobile1.jpg", "img/mobile2.jpg", "img/mobile3.jpg"],  
-            tech: ["Android Studio", "Java"],
-            desc: "An Android mobile app that simplifies event venue booking. Users can browse and filter venues by category, location, and preferred date. The app provides a smooth, intuitive booking experience designed for event organizers and individuals looking for the perfect venue.",
-            github: "https://github.com/Savierash/venue-vista-mobile"
+            mobile: true,   // ← add this flag
+            tech: ["Android", "Kotlin", "Firebase", "XML"],
+            desc: "An Android mobile app that simplifies event venue booking...",
+            github: "https://github.com/Savierash/VenueVista"
         },
         fetchchill: {
             title: "Fetch&Chill",
@@ -1123,9 +1177,13 @@ body:not(.dark) .scroll-top {
         galleryIndex = 0;
 
         if (currentImages.length > 0) {
-            let imgs = currentImages.map((src, i) =>
-                `<img src="${src}" alt="${p.title} screenshot ${i+1}" class="${i === 0 ? 'active' : ''}">`
-            ).join('');
+            const mobileClass = p.mobile ? ' mobile-view' : '';
+            if (p.mobile) gallery.classList.add('mobile-frame');
+            else gallery.classList.remove('mobile-frame');
+
+        let imgs = currentImages.map((src, i) =>
+            `<img src="${src}" alt="${p.title} screenshot ${i+1}" class="${i === 0 ? 'active' : ''}${mobileClass}">`
+        ).join('');
 
             let arrows = currentImages.length > 1
                 ? `<button class="gallery-prev" onclick="galleryNav(-1)">&#10094;</button>
