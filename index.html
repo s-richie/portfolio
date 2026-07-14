@@ -28,11 +28,6 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
-body:not(.dark) {
-    color: #333;
-    background: #f5f5f5;
-}
-
 .header {
     position: fixed;
     top: 0;
@@ -47,11 +42,6 @@ body:not(.dark) {
     transition: background 0.3s ease;
 }
 
-body:not(.dark) .header {
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 .logo {
     font-size: 1.8rem;
     color: #fff;
@@ -59,10 +49,6 @@ body:not(.dark) .header {
     font-weight: 700;
     opacity: 0;
     animation: slideRight 1s ease forwards;
-}
-
-body:not(.dark) .logo {
-    color: #333;
 }
 
 .navbar {
@@ -82,10 +68,6 @@ body:not(.dark) .logo {
     animation-delay: calc(0.2s * var(--i, 1));
 }
 
-body:not(.dark) .navbar a {
-    color: #333;
-}
-
 .navbar a:hover,
 .navbar a.active {
     color: #971111;
@@ -98,10 +80,6 @@ body:not(.dark) .navbar a {
     color: #fff;
     cursor: pointer;
     display: none;
-}
-
-body:not(.dark) #toggle-btn {
-    color: #333;
 }
 
 section {
@@ -205,10 +183,6 @@ section {
     animation-delay: calc(0.2s * var(--i, 1));
 }
 
-body:not(.dark) .social-links a {
-    border-color: #333;
-}
-
 .social-links a:hover {
     background: #971111;
     color: #fff;
@@ -232,10 +206,6 @@ body:not(.dark) .social-links a {
     animation-delay: 1.5s;
     cursor: pointer;
     margin-top: 15px;
-}
-
-body:not(.dark) .btn {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
@@ -303,12 +273,6 @@ body:not(.dark) .btn {
     text-align: center;
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-body:not(.dark) .project-card,
-body:not(.dark) .skill-card {
-    background: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover,
@@ -455,11 +419,6 @@ body:not(.dark) .skill-card {
     animation: zoomIn 0.25s ease;
 }
 
-body:not(.dark) .proj-modal {
-    background: #fff;
-    color: #333;
-}
-
 .proj-modal-close {
     position: absolute;
     top: 14px;
@@ -573,7 +532,6 @@ body:not(.dark) .proj-modal {
     margin-bottom: 8px;
     color: #fff;
 }
-body:not(.dark) .proj-modal h2 { color: #333; }
 
 .proj-tech {
     display: flex;
@@ -591,19 +549,12 @@ body:not(.dark) .proj-modal h2 { color: #333; }
     color: #ccc;
 }
 
-body:not(.dark) .tech-badge {
-    background: #f0f0f0;
-    border-color: #ddd;
-    color: #555;
-}
-
 .proj-desc {
     font-size: 0.95rem;
     line-height: 1.7;
     color: #ccc;
     margin-bottom: 1.2rem;
 }
-body:not(.dark) .proj-desc { color: #555; }
 
 .proj-actions { display: flex; gap: 10px; }
 
@@ -688,12 +639,6 @@ body:not(.dark) .proj-desc { color: #555; }
     font-weight: 500;
 }
 
-body:not(.dark) .contact-form input,
-body:not(.dark) .contact-form textarea {
-    background: #e0e0e0;
-    color: #333;
-}
-
 .contact-form textarea {
     resize: vertical;
     min-height: 150px;
@@ -745,12 +690,6 @@ body:not(.dark) .contact-form textarea {
     font-size: 1rem;
 }
 
-body:not(.dark) .footer {
-    background: #fff;
-    color: #333;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
 .scroll-top {
     position: fixed;
     bottom: 30px;
@@ -763,11 +702,6 @@ body:not(.dark) .footer {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     display: none;
     transition: all 0.3s ease;
-}
-
-body:not(.dark) .scroll-top {
-    background: #333;
-    color: #fff;
 }
 
 .scroll-top:hover {
@@ -805,7 +739,6 @@ body:not(.dark) .scroll-top {
         padding: 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
-    body:not(.dark) .navbar { background: #fff; }
     .navbar.active { display: flex; }
     .navbar a { margin: 10px 0; font-size: 1.5rem; }
     #toggle-btn { display: block; }
@@ -853,9 +786,6 @@ body:not(.dark) .scroll-top {
 <body class="dark">
     <header class="header">
         <a href="#home" class="logo">Suniga</a>
-        <button id="theme-toggle" aria-label="Toggle Theme">
-            <i class="bx bx-moon"></i>
-        </button>
         <button id="toggle-btn" aria-label="Menu">
             <i class="bx bx-menu"></i>
         </button>
@@ -874,7 +804,7 @@ body:not(.dark) .scroll-top {
                 <h3>Hello, I'm</h3>
                 <h1>Suniga</h1>
                 <h3>A <span class="typed-text"></span></h3>
-                <p>College student skilled in HTML, Arduino, and web design. I built an "Online Enrollment Form" and love sketching in my free time.</p>
+                <p>College student skilled in HTML and web design, and eager to learn more about programming. I'm passionate about coding and love sketching in my free time.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/richelle.suniga.5" target="_blank" rel="noopener" title="Visit my Facebook profile"><i class="bx bxl-facebook-circle"></i></a>
                     <a href="https://github.com/Savierash" target="_blank" rel="noopener" title="Visit my GitHub profile"><i class="bx bxl-github"></i></a>
@@ -1119,27 +1049,6 @@ window.addEventListener('scroll', () => {
         }
     });
 });
-
-    // ── Theme toggle ──
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const icon = themeToggle?.querySelector('i');
-    if (themeToggle && icon) {
-        if (localStorage.getItem('theme') === 'light') {
-            body.classList.remove('dark');
-            icon.classList.replace('bx-moon', 'bx-sun');
-        }
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            if (body.classList.contains('dark')) {
-                icon.classList.replace('bx-sun', 'bx-moon');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                icon.classList.replace('bx-moon', 'bx-sun');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    }
 
     // ── Scroll to top ──
     const scrollTop = document.querySelector('.scroll-top');
