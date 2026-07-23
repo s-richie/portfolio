@@ -802,9 +802,9 @@ section {
         <div class="home-container">
             <div class="home-content">
                 <h3>Hello, I'm</h3>
-                <h1>Suniga</h1>
+                <h1>Richelle Suniga</h1>
                 <h3>A <span class="typed-text"></span></h3>
-                <p>College student skilled in HTML and web design, and eager to learn more about programming. I'm passionate about coding and love sketching in my free time.</p>
+                <p>I am a Cyber Security student with a strong interest in backend development, web technologies, and secure application development. I have experience building web and mobile applications using HTML, ReactJS, Kotlin, and Android Studio. Passionate about continuous learning, I enjoy solving problems, exploring new technologies, and creating practical solutions that deliver meaningful user experiences.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/richelle.suniga.5" target="_blank" rel="noopener" title="Visit my Facebook profile"><i class="bx bxl-facebook-circle"></i></a>
                     <a href="https://github.com/Savierash" target="_blank" rel="noopener" title="Visit my GitHub profile"><i class="bx bxl-github"></i></a>
@@ -825,8 +825,8 @@ section {
         </div>
         <div class="about-text">
             <h2>About <span>Me</span></h2>
-            <h4>Web Developer</h4>
-            <p>My journey began in junior high with Arduino, igniting my passion for tech. In college, I created an Online Enrollment Form, Dama Master, VenueVista as Frontend, and Fetch&Chill as Frontend and Backend.</p>
+            <h4>Cyber Security</h4>
+            <p>My passion for technology began in junior high school when I was introduced to Arduino, sparking my curiosity about programming and innovation. This inspired me to pursue a degree in Cyber Security, where I continue to strengthen my knowledge of information security, software development, and secure computing practices. Through academic projects and hands-on experience, I have developed skills in web and mobile application development while continuously expanding my technical expertise. I am eager to grow as a developer, contribute to impactful projects, and build secure, reliable digital solutions.</p>
             <a href="#contact" class="btn">Connect with Me</a>
         </div>
     </section>
@@ -842,10 +842,10 @@ section {
                 <button class="btn" onclick="openProjModal('enrollment')">Learn More</button>
             </div>
             <div class="project-card">
-                <i class="bx bxs-chess"></i>
-                <h3>Chess</h3>
-                <p>A two-player chess app displaying winners, losers, and scores.</p>
-                <button class="btn" onclick="openProjModal('chess')">Learn More</button>
+                <i class="bx bxs-dama"></i>
+                <h3>Dama Master</h3>
+                <p>A two-player dama app displaying winners, losers, and scores.</p>
+                <button class="btn" onclick="openProjModal('dama')">Learn More</button>
             </div>
             <div class="project-card">
                 <i class="bx bxs-book"></i>
@@ -995,7 +995,7 @@ section {
     const typedElement = document.querySelector('.typed-text');
     if (typedElement) {
         new Typed('.typed-text', {
-            strings: ['Web Developer','Frontend', 'Backend','Computer Security' ,'Cloud Programming'],
+            strings: ['Web Developer','Frontend','Computer Security' ,'Cloud Programming'],
             typeSpeed: 100,
             backSpeed: 50,
             loop: true
@@ -1098,16 +1098,16 @@ window.addEventListener('scroll', () => {
             icon: "bx bx-code",
             images: ["img/online-enrollment.png"],  
             tech: ["Visual Studio Code", "HTML", "CSS", "JavaScript", "PHP"],
-            desc: "A full-featured web application built for Upang College that allows students to enroll online. The system supports document and file submission, real-time messaging between students and administrators, and streamlines the entire enrollment workflow digitally — eliminating the need for students to visit campus just to enroll.",
+            desc: "A full-featured web application built for Upang College that allows students to enroll online. The system supports document and file submission, real-time messaging between students and administrators, and streamlines the entire enrollment workflow digitally eliminating the need for students to visit campus just to enroll.",
             github: "https://github.com/Savierash/online_enrollment_form"
         },
-        chess: {
-            title: "Chess",
-            icon: "bx bxs-chess",
+        dama: {
+            title: "Dama Master",
+            icon: "bx bxs-dama",
             images: ["img/dama.png"],  
             tech: ["Java", "Netbeans IDE", "Figma"],
-            desc: "A two-player chess application that enforces all standard chess rules — from castling to en passant. It tracks game results including winners, losers, and cumulative scores, making it great for competitive play between two users on the same device.",
-            github: "https://github.com/Savierash/chess"
+            desc: "A two-player dama application that enforces all standard dama rules from castling to en passant. It tracks game results including winners, losers, and cumulative scores, making it great for competitive play between two users on the same device.",
+            github: "https://github.com/s-richie/dama-master"
         },
         venuevista: {
             title: "VenueVista",
@@ -1116,14 +1116,14 @@ window.addEventListener('scroll', () => {
             mobile: true,   // ← add this flag
             tech: ["Android", "Kotlin", "Firebase", "XML"],
             desc: "An Android mobile app that simplifies event venue booking...",
-            github: "https://github.com/Savierash/VenueVista"
+            github: "https://github.com/s-richie/venue-vista-mobile"
         },
         fetchchill: {
             title: "Fetch&Chill",
             icon: "bx bxs-dog",
             images: ["img/fetchill2.png", "img/fetchill1.png"],  
             tech: ["HTML", "CSS", "JavaScript", "PHP"],
-            desc: "A dedicated mobile app for pet parents to keep track of their pets' health records, grooming schedules, vet appointments, and wellness milestones — all in one convenient place. Built as both Frontend and Backend developer.",
+            desc: "A dedicated mobile app for pet parents to keep track of their pets' health records, grooming schedules, vet appointments, and wellness milestones all in one convenient place. Built as both Frontend and Backend developer.",
             github: "https://github.com/Savierash/FetchChill"
         },
         openpc: {
