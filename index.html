@@ -65,25 +65,18 @@ section { padding: 100px 10%; min-height: auto; }
 .project-card h3, .skill-card h3 { font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 15px; }
 .project-card p { font-size: 1rem; margin-bottom: 20px; }
 .project-card .btn { opacity: 1; animation: none; }
-.certificate-card h3 { font-size: clamp(1.1rem, 3.5vw, 1.5rem); overflow-wrap: anywhere; }
-.certificate-card p { margin: 12px 0; }
+.certificate-card h3 { font-size: clamp(1.1rem, 3.5vw, 1.5rem); overflow-wrap: anywhere; margin-bottom: 15px; }
 .certificate-card .btn { opacity: 1; animation: none; }
 
-/* ── Certificate lightbox ── */
-.cert-modal { display: none; position: fixed; z-index: 999; inset: 0; overflow: auto; background: rgba(0,0,0,.9); text-align: center; align-items: center; justify-content: center; flex-direction: column; padding: 60px 20px 20px; }
-.cert-modal[style*="display: block"] { display: flex !important; }
-.cert-modal-content { margin: auto; display: block; width: 90%; max-width: 700px; max-height: 80vh; object-fit: contain; border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,.5); animation: zoomIn .3s; }
-@keyframes zoomIn { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.cert-close { position: absolute; top: 30px; right: 50px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: .3s; }
-.cert-close:hover { color: #ff4444; }
-.prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 16px; margin-top: -22px; color: #fff; font-weight: bold; font-size: 40px; transition: .3s; -webkit-user-select: none; user-select: none; border-radius: 3px; }
-.prev { left: 20px; } .next { right: 20px; }
-.prev:hover, .next:hover { color: #ff4444; }
+/* ── Certificate modal (same look as project modal) ── */
+.cert-image-wrap { position: relative; width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 1.2rem; background: #111; display: flex; align-items: center; justify-content: center; }
+.cert-image-wrap img { display: block; width: 100%; max-height: 320px; object-fit: contain; }
 
 /* ── Project modal ── */
 .proj-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
 .proj-overlay.open { display: flex; }
 .proj-modal { background: #1a1a1a; border-radius: 16px; padding: 2rem; max-width: 560px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; animation: zoomIn .25s ease; }
+@keyframes zoomIn { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .proj-modal-close { position: absolute; top: 14px; right: 18px; font-size: 28px; cursor: pointer; background: none; border: none; color: #aaa; line-height: 1; transition: color .2s; z-index: 3; }
 .proj-modal-close:hover { color: #971111; }
 .proj-gallery { position: relative; width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 1.2rem; background: #111; min-height: 200px; display: flex; align-items: center; justify-content: center; }
@@ -175,9 +168,6 @@ section { padding: 100px 10%; min-height: auto; }
     section { padding: 90px 5% 60px; }
     .project-grid, .skill-grid, .certificate-grid { gap: 20px; }
     .proj-modal { padding: 1.5rem; max-height: 90vh; }
-    .cert-modal { padding: 70px 10px 20px; }
-    .cert-modal-content { width: 95%; max-width: 100%; }
-    .cert-close { top: 12px; right: 18px; font-size: 34px; }
 }
 
 /* Phones */
@@ -207,9 +197,6 @@ section { padding: 100px 10%; min-height: auto; }
     .proj-gallery img.active:not(.mobile-view) { max-height: 200px; }
     .btn-github { width: 100%; text-align: center; }
 
-    .prev, .next { font-size: 24px; padding: 8px; background: rgba(0,0,0,.4); }
-    .prev { left: 6px; } .next { right: 6px; }
-
     .toast { width: calc(100% - 32px); max-width: 420px; border-radius: 16px; bottom: 16px; }
     .scroll-top { bottom: 16px; right: 16px; font-size: 1.6rem; }
     .footer { font-size: .85rem; }
@@ -225,7 +212,7 @@ section { padding: 100px 10%; min-height: auto; }
     .home { min-height: auto; padding-top: 100px; }
     .navbar { max-height: calc(100vh - 60px); }
     .proj-modal { max-height: 94vh; }
-    .cert-modal-content { max-height: 70vh; }
+    .cert-image-wrap img { max-height: 200px; }
 }
 
 @supports (padding: max(0px)) {
@@ -347,44 +334,46 @@ section { padding: 100px 10%; min-height: auto; }
         </div>
     </section>
 
-    <!-- ── Certificates ── -->
+    <!-- ── Certificates (title only; description shows in the popup) ── -->
     <section class="certificates" id="certificates">
         <h2 class="section-title">My <span>Certificates</span></h2>
         <div class="certificate-grid">
             <div class="certificate-card">
                 <h3 class="cert-span"><span>Design Thinking Workshop: Exploring Research Innovation Through the Use of IT Solution</span></h3>
-                <p>This workshop provided valuable insights into the application of design thinking principles to enhance research forum processes, fostering innovation, collaboration, and impactful results.</p>
-                <button class="btn view-btn" data-img="img/cert1.jpg">View Image</button>
+                <button class="btn view-btn" data-img="img/cert1.jpg" data-desc="This workshop provided valuable insights into the application of design thinking principles to enhance research forum processes, fostering innovation, collaboration, and impactful results.">View Image</button>
             </div>
             <div class="certificate-card">
                 <h3 class="cert-span"><span>Site Success Ladder</span></h3>
-                <p>For achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.</p>
-                <button class="btn view-btn" data-img="img/cert2.jpg">View Image</button>
+                <button class="btn view-btn" data-img="img/cert2.jpg" data-desc="For achieving and completing the Level 1 Requirement last A.Y. 2023-2024 during the CITE Success Ladder 2024.">View Image</button>
             </div>
             <div class="certificate-card">
                 <h3 class="cert-span"><span>Site Success Ladder</span></h3>
-                <p>For achieving and completing the Level 2 Requirement last A.Y. 2024-2025 during the CITE Success Ladder 2025.</p>
-                <button class="btn view-btn" data-img="img/cert3.jpg">View Image</button>
+                <button class="btn view-btn" data-img="img/cert3.jpg" data-desc="For achieving and completing the Level 2 Requirement last A.Y. 2024-2025 during the CITE Success Ladder 2025.">View Image</button>
             </div>
             <div class="certificate-card">
                 <h3 class="cert-span"><span>Capture the Flag</span></h3>
-                <p>For actively participating in the "Capture the Flag: Basic Training Seminar" held on September 29, 2024 at PHINMA-UPang.</p>
-                <button class="btn view-btn" data-img="img/cert4.jpg">View Image</button>
+                <button class="btn view-btn" data-img="img/cert4.jpg" data-desc="For actively participating in the &quot;Capture the Flag: Basic Training Seminar&quot; held on September 29, 2024 at PHINMA-UPang.">View Image</button>
             </div>
             <div class="certificate-card">
                 <h3 class="cert-span"><span>Certified Cybersecurity Professional (CCP)</span></h3>
-                <p>For successfully completing the Certified Cybersecurity Professional (CCP) certification module from Appkademiya. Issued on October 19, 2026 and digitally verified.</p>
-                <button class="btn view-btn" data-img="img/cert1.png">View Image</button>
+                <button class="btn view-btn" data-img="img/cert1.png" data-desc="For successfully completing the Certified Cybersecurity Professional (CCP) certification module from Appkademiya. Issued on October 19, 2026 and digitally verified.">View Image</button>
             </div>
         </div>
     </section>
 
-    <!-- ── Certificate Image Modal ── -->
-    <div id="certModal" class="cert-modal">
-        <span class="cert-close">&times;</span>
-        <img class="cert-modal-content" id="certModalImg" alt="Certificate">
-        <a class="prev">&#10094;</a>
-        <a class="next">&#10095;</a>
+    <!-- ── Certificate Modal ── -->
+    <div class="proj-overlay" id="cert-overlay" onclick="handleCertOverlay(event)">
+        <div class="proj-modal">
+            <button class="proj-modal-close" onclick="closeCertModal()" aria-label="Close">&#215;</button>
+            <div class="cert-image-wrap" id="cert-image-wrap">
+                <img id="cert-img" alt="Certificate">
+                <button class="gallery-prev" onclick="certNav(-1)" aria-label="Previous">&#10094;</button>
+                <button class="gallery-next" onclick="certNav(1)" aria-label="Next">&#10095;</button>
+            </div>
+            <div class="gallery-dots" id="cert-dots"></div>
+            <h2 id="cert-title"></h2>
+            <p class="proj-desc" id="cert-desc"></p>
+        </div>
     </div>
 
     <!-- ── Contact ── -->
@@ -479,42 +468,54 @@ if (scrollTop) {
     });
 }
 
-// ── Certificate image modal ──
-const certModal = document.getElementById('certModal');
-const certModalImg = document.getElementById('certModalImg');
-const certCloseBtn = document.querySelector('.cert-close');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-const certImages = Array.from(document.querySelectorAll('.view-btn')).map(btn => btn.dataset.img);
-let certCurrentIndex = 0;
+// ── Certificate modal ──
+const certOverlay = document.getElementById('cert-overlay');
+const certData = Array.from(document.querySelectorAll('.view-btn')).map(btn => ({
+    img: btn.dataset.img,
+    desc: btn.dataset.desc,
+    title: btn.closest('.certificate-card').querySelector('h3').textContent.trim()
+}));
+let certIndex = 0;
 
-document.querySelectorAll('.view-btn').forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        certModal.style.display = 'block';
-        certModalImg.src = btn.dataset.img;
-        certCurrentIndex = index;
-    });
-});
-
-function showCertImage(index) {
-    if (index < 0) index = certImages.length - 1;
-    if (index >= certImages.length) index = 0;
-    certCurrentIndex = index;
-    certModalImg.src = certImages[certCurrentIndex];
+function renderCert() {
+    const c = certData[certIndex];
+    document.getElementById('cert-img').src = c.img;
+    document.getElementById('cert-img').alt = c.title;
+    document.getElementById('cert-title').textContent = c.title;
+    document.getElementById('cert-desc').textContent = c.desc;
+    document.getElementById('cert-dots').innerHTML = certData.map((_, i) =>
+        `<button class="gallery-dot ${i === certIndex ? 'active' : ''}" onclick="certGoTo(${i})" aria-label="Certificate ${i + 1}"></button>`
+    ).join('');
 }
+function openCertModal(i) {
+    certIndex = i;
+    renderCert();
+    certOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function certGoTo(i) {
+    certIndex = (i + certData.length) % certData.length;
+    renderCert();
+}
+function certNav(dir) { certGoTo(certIndex + dir); }
+function closeCertModal() {
+    certOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+function handleCertOverlay(e) { if (e.target === certOverlay) closeCertModal(); }
 
-if (prevBtn) prevBtn.addEventListener('click', () => showCertImage(certCurrentIndex - 1));
-if (nextBtn) nextBtn.addEventListener('click', () => showCertImage(certCurrentIndex + 1));
-if (certCloseBtn) certCloseBtn.addEventListener('click', () => certModal.style.display = 'none');
-window.addEventListener('click', e => { if (e.target === certModal) certModal.style.display = 'none'; });
+document.querySelectorAll('.view-btn').forEach((btn, i) => btn.addEventListener('click', () => openCertModal(i)));
 
-// Swipe left/right in the certificate lightbox (touch devices)
-let touchStartX = 0;
-certModal.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-certModal.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(dx) > 50) showCertImage(certCurrentIndex + (dx < 0 ? 1 : -1));
-}, { passive: true });
+// Swipe left/right on touch devices
+(function () {
+    const wrap = document.getElementById('cert-image-wrap');
+    let startX = 0;
+    wrap.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; }, { passive: true });
+    wrap.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].screenX - startX;
+        if (Math.abs(dx) > 50) certNav(dx < 0 ? 1 : -1);
+    }, { passive: true });
+})();
 
 // ── Project detail modal ──
 const projectData = {
@@ -602,7 +603,7 @@ function galleryNav(dir) { galleryGoTo(galleryIndex + dir); }
 
 function galleryGoTo(index) {
     const imgs = document.querySelectorAll('#proj-gallery img');
-    const dots = document.querySelectorAll('.gallery-dot');
+    const dots = document.querySelectorAll('#gallery-dots .gallery-dot');
     if (!imgs.length) return;
     if (index < 0) index = imgs.length - 1;
     if (index >= imgs.length) index = 0;
@@ -622,7 +623,13 @@ function handleProjOverlay(e) {
     if (e.target === document.getElementById('proj-overlay')) closeProjModal();
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjModal(); });
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeProjModal(); closeCertModal(); }
+    if (certOverlay.classList.contains('open')) {
+        if (e.key === 'ArrowLeft') certNav(-1);
+        if (e.key === 'ArrowRight') certNav(1);
+    }
+});
 
 // Swipe through project screenshots on touch devices
 (function () {
