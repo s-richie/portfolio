@@ -145,6 +145,13 @@ section {
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1.2s;
+    background: #1a1a1a;
+    padding: 20px;
+    border: 1px solid #350101;
+    border-left: 4px solid #971111;
+    border-radius: 12px;
+    line-height: 1.8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -245,6 +252,13 @@ section {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 30px;
+    background: #1a1a1a;
+    padding: 20px;
+    border: 1px solid #350101;
+    border-left: 4px solid #971111;
+    border-radius: 12px;
+    line-height: 1.8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .section-title {
@@ -781,6 +795,15 @@ section {
         border-radius: 6px;
     }
 }
+
+/* Responsive design for box of home ans about section */
+@media (max-width: 576px) {
+    .home-content p,
+    .about-text p {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+}
 </style>
 
 <body class="dark">
@@ -807,11 +830,11 @@ section {
                 <p>I am a Cyber Security student with a strong interest in backend development, web technologies, and secure application development. I have experience building web and mobile applications using HTML, ReactJS, Kotlin, and Android Studio. Passionate about continuous learning, I enjoy solving problems, exploring new technologies, and creating practical solutions that deliver meaningful user experiences.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/richelle.suniga.5" target="_blank" rel="noopener" title="Visit my Facebook profile"><i class="bx bxl-facebook-circle"></i></a>
-                    <a href="https://github.com/Savierash" target="_blank" rel="noopener" title="Visit my GitHub profile"><i class="bx bxl-github"></i></a>
+                    <a href="https://github.com/s-richie" target="_blank" rel="noopener" title="Visit my GitHub profile"><i class="bx bxl-github"></i></a>
                     <a href="https://www.instagram.com/suniga_ash" target="_blank" rel="noopener" title="Visit my Instagram profile"><i class="bx bxl-instagram-alt"></i></a>
                     <a href="https://www.tiktok.com/@not_ash.dev" target="_blank" rel="noopener" title="Visit my TikTok profile"><i class="bx bxl-tiktok"></i></a>
                 </div>
-                <a href="https://drive.google.com/file/d/1WsMG9mRECtiBegtxKCveRjSVwyK0VhTY/view?usp=sharing" class="btn" target="_blank" rel="noopener">Download Resume</a>
+                <a href="https://drive.google.com/file/d/1bKb0I1xqfKuph3EWbFw4I0XwoiPUvBm3/view?usp=sharing" class="btn" target="_blank" rel="noopener">Download Resume</a>
             </div>
             <div class="home-image">
                 <img src="img/circle pfp.png" alt="Suniga's Photo">
@@ -937,6 +960,11 @@ section {
                 <p>For actively participating in the "Capture the Flag: Basic Training Seminar" held on September 29, 2024 at PHINMA-UPang.</p>
                 <button class="btn view-btn" data-img="img/cert4.jpg">View Image</button>
             </div>
+            <div class="certificate-card">
+                <h3 class="cert-span"><span>Certified Cybersecurity Professional (CCP)</span></h3>
+                <p>For successfully completing the Certified Cybersecurity Professional (CCP) certification module from Appkademiya. Issued on October 19, 2026 and digitally verified.</p>
+                <button class="btn view-btn" data-img="img/cert1.png">View Image</button>
+            </div>
         </div>
     </section>
 
@@ -961,7 +989,7 @@ section {
             <div class="social-links">
                 <a href="https://www.facebook.com/richelle.suniga.5" target="_blank" rel="noopener" title="Visit my Facebook profile"><i class="bx bxl-facebook-circle"></i></a>
                 <a href="https://www.instagram.com/suniga_ash" target="_blank" rel="noopener" title="Visit my Instagram profile"><i class="bx bxl-instagram-alt"></i></a>
-                <a href="https://github.com/Savierash" target="_blank" rel="noopener" title="Visit my GitHub profile"><i class="bx bxl-github"></i></a>
+                <a href="https://github.com/s-richie" target="_blank" rel="noopener" title="Visit my GitHub profile"><i class="bx bxl-github"></i></a>
             </div>
         </div>
         <div class="contact-form">
@@ -1099,7 +1127,7 @@ window.addEventListener('scroll', () => {
             images: ["img/online-enrollment.png"],  
             tech: ["Visual Studio Code", "HTML", "CSS", "JavaScript", "PHP"],
             desc: "A full-featured web application built for Upang College that allows students to enroll online. The system supports document and file submission, real-time messaging between students and administrators, and streamlines the entire enrollment workflow digitally eliminating the need for students to visit campus just to enroll.",
-            github: "https://github.com/Savierash/online_enrollment_form"
+            github: "https://github.com/s-richie/online_enrollment_form"
         },
         dama: {
             title: "Dama Master",
@@ -1124,7 +1152,7 @@ window.addEventListener('scroll', () => {
             images: ["img/fetchill2.png", "img/fetchill1.png"],  
             tech: ["HTML", "CSS", "JavaScript", "PHP"],
             desc: "A dedicated mobile app for pet parents to keep track of their pets' health records, grooming schedules, vet appointments, and wellness milestones all in one convenient place. Built as both Frontend and Backend developer.",
-            github: "https://github.com/Savierash/FetchChill"
+            github: "https://github.com/s-richie/FetchChill"
         },
         openpc: {
             title: "OpenPC",
@@ -1132,7 +1160,7 @@ window.addEventListener('scroll', () => {
             images: ["img/openpc.png", "img/openpc2.png"],  
             tech: ["Visual Studio Code", "MERN", "MongoDB"],
             desc: "A web-based application system designed to assist computer laboratory auditors in effectively monitoring and managing computer units. The system provides real-time tracking of computer status, making lab audits faster, more accurate, and paperless.",
-            github: "https://github.com/Savierash/Open-Pc"
+            github: "https://github.com/s-richie/Open-Pc"
         }
     };
 
