@@ -1,817 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Suniga, a web developer skilled in HTML, Java, and Android Studio. Explore projects like Online Enrollment Form and VenueVista.">
-    <meta name="keywords" content="web developer, portfolio, HTML, Java, Android Studio, Suniga">
-    <meta name="author" content="Suniga">
-    <title>Suniga | Web Developer Portfolio</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Portfolio of Suniga, a web developer skilled in HTML, Java, and Android Studio. Explore projects like Online Enrollment Form and VenueVista.">
+<meta name="keywords" content="web developer, portfolio, HTML, Java, Android Studio, Suniga">
+<meta name="author" content="Suniga">
+<title>Suniga | Web Developer Portfolio</title>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; font-family: 'Poppins', sans-serif; }
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+body { color: #fff; background: #0a0a0a; transition: background .3s, color .3s; overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
 
-body {
-    color: #fff;
-    background: #0a0a0a;
-    transition: background 0.3s, color 0.3s;
-}
+/* ── Header ── */
+.header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 10%; background: #350101; display: flex; justify-content: space-between; align-items: center; z-index: 100; transition: background .3s ease; }
+.logo { font-size: 1.8rem; color: #fff; text-decoration: none; font-weight: 700; opacity: 0; animation: slideRight 1s ease forwards; }
+.navbar { display: flex; align-items: center; }
+.navbar a { font-size: 1.2rem; color: #fff; text-decoration: none; margin-left: 30px; font-weight: 500; transition: color .3s ease; opacity: 0; animation: slideTop .5s ease forwards; animation-delay: calc(.2s * var(--i, 1)); }
+.navbar a:hover, .navbar a.active { color: #971111; }
+#toggle-btn { background: none; border: none; font-size: 1.8rem; color: #fff; cursor: pointer; display: none; min-width: 44px; min-height: 44px; }
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10%;
-    background: #350101;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    transition: background 0.3s ease;
-}
+section { padding: 100px 10%; min-height: auto; }
 
-.logo {
-    font-size: 1.8rem;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    opacity: 0;
-    animation: slideRight 1s ease forwards;
-}
+/* ── Home ── */
+.home { display: flex; justify-content: center; align-items: center; min-height: 100vh; min-height: 100svh; padding: 20px; }
+.home-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; width: 100%; gap: 20px; }
+.home-content { flex: 1; text-align: left; }
+.home-image { flex: 1; display: flex; justify-content: flex-end; }
+.home-image img { max-width: 400px; width: 100%; height: auto; border-radius: 10px; object-fit: cover; }
+.home-content h3 { font-size: clamp(1.2rem, 4vw, 2rem); font-weight: 700; opacity: 0; animation: slideBottom 1s ease forwards; animation-delay: .7s; }
+.home-content h1 { font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 700; margin: 10px 0; overflow-wrap: anywhere; opacity: 0; animation: slideTop 1s ease forwards; animation-delay: 1s; }
+.home-content p { font-size: 1.2rem; margin-bottom: 20px; opacity: 0; animation: slideLeft 1s ease forwards; animation-delay: 1.2s; background: #1a1a1a; padding: 20px; border: 1px solid #350101; border-left: 4px solid #971111; border-radius: 12px; line-height: 1.8; box-shadow: 0 5px 15px rgba(0,0,0,.3); }
+.typed-text { color: #971111; }
 
-.navbar {
-    display: flex;
-    align-items: center;
-}
+.social-links a { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; background: transparent; border: 2px solid #fff; border-radius: 50%; font-size: 1.5rem; color: #971111; text-decoration: none; margin: 20px 10px 20px 0; transition: all .3s ease; opacity: 0; animation: slideLeft 1s ease forwards; animation-delay: calc(.2s * var(--i, 1)); }
+.social-links a:hover { background: #971111; color: #fff; box-shadow: 0 0 15px #971111; }
 
-.navbar a {
-    font-size: 1.2rem;
-    color: #fff;
-    text-decoration: none;
-    margin-left: 30px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    opacity: 0;
-    animation: slideTop 0.5s ease forwards;
-    animation-delay: calc(0.2s * var(--i, 1));
-}
+.btn { display: inline-block; padding: 12px 30px; min-height: 44px; background: #971111; color: #fff; border-radius: 40px; border: none; font-size: 1rem; font-weight: 600; text-decoration: none; box-shadow: 0 0 10px rgba(255,255,255,.5); transition: all .3s ease; opacity: 0; animation: slideTop 1s ease forwards; animation-delay: 1.5s; cursor: pointer; margin-top: 15px; }
+.btn:hover { box-shadow: 0 0 20px #971111, 0 0 40px #971111; background: #7e0303; }
 
-.navbar a:hover,
-.navbar a.active {
-    color: #971111;
-}
+/* ── About ── */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+.about-img img { max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,.5); }
+.about-text h2 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 10px; }
+.about-text h2 span, .section-title span, .cert-span span { color: #971111; }
+.about-text h4 { font-size: 1.8rem; margin-bottom: 20px; }
+.about-text p { font-size: 1.2rem; margin-bottom: 30px; background: #1a1a1a; padding: 20px; border: 1px solid #350101; border-left: 4px solid #971111; border-radius: 12px; line-height: 1.8; box-shadow: 0 5px 15px rgba(0,0,0,.3); }
 
-#toggle-btn {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: #fff;
-    cursor: pointer;
-    display: none;
-}
+.section-title { font-size: clamp(2rem, 6vw, 3rem); text-align: center; margin-bottom: 50px; }
 
-section {
-    padding: 100px 10%;
-    min-height: 100vh;
-}
+/* ── Cards ── */
+.project-grid, .skill-grid, .certificate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 30px; }
+.project-card, .skill-card, .certificate-card { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(255,255,255,.2); transition: transform .3s ease, box-shadow .3s ease; }
+.project-card:hover, .skill-card:hover, .certificate-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(151,17,17,.5); }
+.project-card i, .skill-card i { font-size: 3rem; color: #971111; margin-bottom: 20px; }
+.project-card h3, .skill-card h3 { font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 15px; }
+.project-card p { font-size: 1rem; margin-bottom: 20px; }
+.project-card .btn { opacity: 1; animation: none; }
+.certificate-card h3 { font-size: clamp(1.1rem, 3.5vw, 1.5rem); overflow-wrap: anywhere; }
+.certificate-card p { margin: 12px 0; }
+.certificate-card .btn { opacity: 1; animation: none; }
 
-.home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.home-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    gap: 20px;
-}
-
-.home-content {
-    flex: 1;
-    text-align: left;
-}
-
-.home-image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.home-image img {
-    max-width: 400px;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.home-content h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    opacity: 0;
-    animation: slideBottom 1s ease forwards;
-    animation-delay: 0.7s;
-}
-
-.home-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin: 10px 0;
-    opacity: 0;
-    animation: slideTop 1s ease forwards;
-    animation-delay: 1s;
-}
-
-.home-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: slideLeft 1s ease forwards;
-    animation-delay: 1.2s;
-    background: #1a1a1a;
-    padding: 20px;
-    border: 1px solid #350101;
-    border-left: 4px solid #971111;
-    border-radius: 12px;
-    line-height: 1.8;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-    .home-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .home-image {
-        justify-content: center;
-    }
-    .home-image img {
-        max-width: 200px;
-    }
-}
-
-.typed-text {
-    color: #971111;
-}
-
-.social-links a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    color: #971111;
-    text-decoration: none;
-    margin: 20px 10px 20px 0;
-    transition: all 0.3s ease;
-    opacity: 0;
-    animation: slideLeft 1s ease forwards;
-    animation-delay: calc(0.2s * var(--i, 1));
-}
-
-.social-links a:hover {
-    background: #971111;
-    color: #fff;
-    box-shadow: 0 0 15px #971111;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #971111;
-    color: #fff;
-    border-radius: 40px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: all 0.3s ease;
-    opacity: 0;
-    animation: slideTop 1s ease forwards;
-    animation-delay: 1.5s;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-.btn:hover {
-    box-shadow: 0 0 20px #971111, 0 0 40px #971111;
-    background: #7e0303;
-}
-
-.about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-}
-
-.about-img img {
-    max-width: 80%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.about-text h2 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.about-text h2 span {
-    color: #971111;
-}
-
-.about-text h4 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    background: #1a1a1a;
-    padding: 20px;
-    border: 1px solid #350101;
-    border-left: 4px solid #971111;
-    border-radius: 12px;
-    line-height: 1.8;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.section-title {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title span {
-    color: #971111;
-}
-
-.project-grid,
-.skill-grid,
-.certificate-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.project-card,
-.skill-card {
-    background: #1a1a1a;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover,
-.skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(151, 17, 17, 0.5);
-}
-
-.project-card i,
-.skill-card i {
-    font-size: 3rem;
-    color: #971111;
-    margin-bottom: 20px;
-}
-
-.project-card h3,
-.skill-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.project-card p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-/* Project card btn overrides (no animation) */
-.project-card .btn {
-    opacity: 1;
-    animation: none;
-}
-
-.cert-span span {
-    color: #971111;
-}
-
-.certificate-card {
-    background: #1a1a1a;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-.certificate-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(151, 17, 17, 0.5);
-}
-
-/* ── Certificate Image Modal ── */
-.cert-modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
-    text-align: center;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 60px 20px 20px;
-}
-
-.cert-modal[style*="display: block"] {
-    display: flex !important;
-}
-
-.cert-modal-content {
-    margin: auto;
-    display: block;
-    width: 90%;
-    max-width: 700px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.5);
-    animation: zoomIn 0.3s;
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.cert-close {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
+/* ── Certificate lightbox ── */
+.cert-modal { display: none; position: fixed; z-index: 999; inset: 0; overflow: auto; background: rgba(0,0,0,.9); text-align: center; align-items: center; justify-content: center; flex-direction: column; padding: 60px 20px 20px; }
+.cert-modal[style*="display: block"] { display: flex !important; }
+.cert-modal-content { margin: auto; display: block; width: 90%; max-width: 700px; max-height: 80vh; object-fit: contain; border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,.5); animation: zoomIn .3s; }
+@keyframes zoomIn { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.cert-close { position: absolute; top: 30px; right: 50px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: .3s; }
 .cert-close:hover { color: #ff4444; }
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 40px;
-    transition: 0.3s;
-    -webkit-user-select: none;
-    user-select: none;
-    border-radius: 3px;
-}
-.prev { left: 20px; }
-.next { right: 20px; }
+.prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 16px; margin-top: -22px; color: #fff; font-weight: bold; font-size: 40px; transition: .3s; -webkit-user-select: none; user-select: none; border-radius: 3px; }
+.prev { left: 20px; } .next { right: 20px; }
 .prev:hover, .next:hover { color: #ff4444; }
 
-/* ── Project Detail Modal ── */
-.proj-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
+/* ── Project modal ── */
+.proj-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
 .proj-overlay.open { display: flex; }
-
-.proj-modal {
-    background: #1a1a1a;
-    border-radius: 16px;
-    padding: 2rem;
-    max-width: 560px;
-    width: 100%;
-    max-height: 85vh;
-    overflow-y: auto;
-    position: relative;
-    animation: zoomIn 0.25s ease;
-}
-
-.proj-modal-close {
-    position: absolute;
-    top: 14px;
-    right: 18px;
-    font-size: 28px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #aaa;
-    line-height: 1;
-    transition: color 0.2s;
-}
+.proj-modal { background: #1a1a1a; border-radius: 16px; padding: 2rem; max-width: 560px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; animation: zoomIn .25s ease; }
+.proj-modal-close { position: absolute; top: 14px; right: 18px; font-size: 28px; cursor: pointer; background: none; border: none; color: #aaa; line-height: 1; transition: color .2s; z-index: 3; }
 .proj-modal-close:hover { color: #971111; }
-
-/* image gallery inside project modal */
-.proj-gallery {
-    position: relative;
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1.2rem;
-    background: #111;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* mobile-style portrait frame */
-.proj-gallery img.mobile-view {
-    width: auto;
-    max-width: 220px;
-    max-height: 420px;
-    object-fit: contain;
-    border-radius: 24px;
-    border: 6px solid #333;
-    box-shadow: 0 0 0 2px #555, 0 10px 30px rgba(0,0,0,0.5);
-    margin: 0 auto;
-}
-
-.proj-gallery.mobile-frame {
-    background: #0a0a0a;
-    min-height: 440px;
-    padding: 16px 0;
-    flex-direction: column;
-}
-.proj-gallery img { display: none; }   
+.proj-gallery { position: relative; width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 1.2rem; background: #111; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+.proj-gallery img { display: none; }
 .proj-gallery img.active { display: block; }
-
-/* default (non-mobile) active image */
-.proj-gallery img.active:not(.mobile-view) {
-    width: 100%;
-    max-height: 260px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.proj-gallery-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 2.5rem;
-    color: #888;
-    font-size: 0.9rem;
-}
+.proj-gallery img.active:not(.mobile-view) { width: 100%; max-height: 260px; object-fit: cover; border-radius: 10px; }
+.proj-gallery img.mobile-view { width: auto; max-width: 220px; max-height: 420px; object-fit: contain; border-radius: 24px; border: 6px solid #333; box-shadow: 0 0 0 2px #555, 0 10px 30px rgba(0,0,0,.5); margin: 0 auto; }
+.proj-gallery.mobile-frame { background: #0a0a0a; min-height: 440px; padding: 16px 0; flex-direction: column; }
+.proj-gallery-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 2.5rem; color: #888; font-size: .9rem; }
 .proj-gallery-placeholder i { font-size: 3rem; color: #971111; }
-
-
-/* gallery arrows */
-.gallery-prev, .gallery-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    font-size: 1.4rem;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 2;
-}
-.gallery-prev { left: 8px; }
-.gallery-next { right: 8px; }
+.gallery-prev, .gallery-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.5); color: #fff; border: none; font-size: 1.4rem; padding: 6px 10px; min-height: 44px; border-radius: 6px; cursor: pointer; transition: background .2s; z-index: 2; }
+.gallery-prev { left: 8px; } .gallery-next { right: 8px; }
 .gallery-prev:hover, .gallery-next:hover { background: #971111; }
-
-.gallery-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 8px;
-    margin-bottom: 4px;
-}
-.gallery-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #555;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-    padding: 0;
-}
+.gallery-dots { display: flex; justify-content: center; gap: 6px; margin: 8px 0 4px; }
+.gallery-dot { width: 8px; height: 8px; border-radius: 50%; background: #555; border: none; cursor: pointer; transition: background .2s; padding: 0; }
 .gallery-dot.active { background: #971111; }
-
-.proj-modal h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #fff;
-}
-
-.proj-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 10px 0 14px;
-}
-
-.tech-badge {
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: #2a2a2a;
-    border: 1px solid #444;
-    color: #ccc;
-}
-
-.proj-desc {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #ccc;
-    margin-bottom: 1.2rem;
-}
-
-.proj-actions { display: flex; gap: 10px; }
-
-.btn-github {
-    display: inline-block;
-    padding: 10px 22px;
-    background: #971111;
-    color: #fff;
-    border-radius: 40px;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-.btn-github:hover {
-    background: #7e0303;
-    box-shadow: 0 0 15px #971111;
-}
+.proj-modal h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
+.proj-tech { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; }
+.tech-badge { font-size: .75rem; padding: 4px 12px; border-radius: 20px; background: #2a2a2a; border: 1px solid #444; color: #ccc; }
+.proj-desc { font-size: .95rem; line-height: 1.7; color: #ccc; margin-bottom: 1.2rem; }
+.proj-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-github { display: inline-block; padding: 10px 22px; min-height: 44px; background: #971111; color: #fff; border-radius: 40px; text-decoration: none; font-size: .95rem; font-weight: 600; transition: all .3s ease; }
+.btn-github:hover { background: #7e0303; box-shadow: 0 0 15px #971111; }
 
 /* ── Contact ── */
-.contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.contact-text h2 { font-size: clamp(2.2rem, 7vw, 3.5rem); text-align: center; margin-bottom: 20px; }
+.contact-text h4 { font-size: 1.5rem; margin-bottom: 20px; }
+.contact-text p { font-size: 1.2rem; line-height: 1.6; margin-bottom: 30px; }
+.contact-list { list-style: none; }
+.contact-list li { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; overflow-wrap: anywhere; word-break: break-word; }
+.contact-list i { font-size: 1.5rem; color: #971111; margin-right: 10px; flex-shrink: 0; }
+.contact-form form { display: flex; flex-direction: column; gap: 15px; }
+.contact-form label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); }
+.contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: none; border-radius: 8px; background: #2a2a2a; color: #fff; font-size: 1rem; font-weight: 500; }
+.contact-form textarea { resize: vertical; min-height: 150px; }
+.contact-form .btn { animation: none; opacity: 1; }
 
-.contact-text h2 {
-    font-size: 3.5rem;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.contact-text h4 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.contact-text p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.contact-list li {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-}
-
-.contact-list i {
-    font-size: 1.5rem;
-    color: #971111;
-    margin-right: 10px;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background: #2a2a2a;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
-}
-
-.contact-form .btn {
-    animation: none;
-    opacity: 1;
-}
-
-/* ── Notification Toast ── */
-.toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #1a1a1a;
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 40px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-    border-left: 4px solid #971111;
-    z-index: 9999;
-    opacity: 0;
-    transition: all 0.4s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-.toast.success { border-left-color: #22c55e; }
-.toast.error   { border-left-color: #ef4444; }
+/* ── Toast ── */
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #1a1a1a; color: #fff; padding: 14px 28px; border-radius: 40px; font-size: .95rem; font-weight: 500; box-shadow: 0 5px 20px rgba(0,0,0,.4); border-left: 4px solid #971111; z-index: 9999; opacity: 0; transition: all .4s ease; display: flex; align-items: center; gap: 10px; max-width: calc(100% - 32px); }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.success { border-left-color: #22c55e; } .toast.error { border-left-color: #ef4444; }
 .toast i { font-size: 1.2rem; }
-.toast.success i { color: #22c55e; }
-.toast.error i   { color: #ef4444; }
+.toast.success i { color: #22c55e; } .toast.error i { color: #ef4444; }
 
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: #350101;
-    font-size: 1rem;
-}
+.footer { text-align: center; padding: 20px; background: #350101; font-size: 1rem; }
+.scroll-top { position: fixed; bottom: 30px; right: 30px; font-size: 2rem; color: #971111; background: #fff; padding: 10px; border-radius: 50%; box-shadow: 0 5px 10px rgba(0,0,0,.5); display: none; transition: all .3s ease; }
+.scroll-top:hover { background: #971111; color: #fff; }
 
-.scroll-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    font-size: 2rem;
-    color: #971111;
-    background: #fff;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-    display: none;
-    transition: all 0.3s ease;
-}
+@keyframes slideRight { 0% { transform: translateX(-100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+@keyframes slideTop { 0% { transform: translateY(100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes slideBottom { 0% { transform: translateY(-100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes slideLeft { 0% { transform: translateX(100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
 
-.scroll-top:hover {
-    background: #971111;
-    color: #fff;
-}
+/* ═════════ RESPONSIVE ═════════ */
+@media (hover: none) { .project-card:hover, .skill-card:hover, .certificate-card:hover { transform: none; } }
 
-@keyframes slideRight {
-    0% { transform: translateX(-100px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-}
-@keyframes slideTop {
-    0% { transform: translateY(100px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-@keyframes slideBottom {
-    0% { transform: translateY(-100px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-@keyframes slideLeft {
-    0% { transform: translateX(100px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-}
+@media (max-width: 1200px) { .header, section { padding-left: 6%; padding-right: 6%; } }
 
+/* Tablets */
 @media (max-width: 992px) {
-    .header { padding: 15px 5%; }
-    .navbar {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #350101;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    }
-    .navbar.active { display: flex; }
-    .navbar a { margin: 10px 0; font-size: 1.5rem; }
+    .header { padding: 15px 6%; }
     #toggle-btn { display: block; }
-    .about, .contact { grid-template-columns: 1fr; }
-    .home-content h1 { font-size: 2.5rem; }
-    .home-content h3 { font-size: 1.5rem; }
-    .home-content p { font-size: 1rem; }
+    .navbar { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #350101; flex-direction: column; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,.5); max-height: calc(100vh - 70px); overflow-y: auto; }
+    .navbar.active { display: flex; }
+    .navbar a { margin: 0; padding: 14px 0; width: 100%; text-align: center; font-size: 1.25rem; }
+
+    .home { padding: 110px 6% 60px; }
+    .home-container { flex-direction: column-reverse; text-align: center; gap: 30px; }
+    .home-content { text-align: center; }
+    .home-image { justify-content: center; }
+    .home-image img { width: min(60vw, 320px); }
+    .home-content p { font-size: 1rem; text-align: left; }
+    .social-links { display: flex; justify-content: center; flex-wrap: wrap; }
+    .social-links a { margin: 15px 8px; }
+
+    .about { grid-template-columns: 1fr; text-align: center; }
+    .about-img img { max-width: min(70%, 380px); margin: 0 auto; display: block; }
+    .about-text p { text-align: left; }
+
+    .contact { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-text { text-align: center; }
+    .contact-list { display: inline-block; text-align: left; }
+    .contact-text .social-links { justify-content: center; }
 }
 
-@media (max-width: 576px) {
-    section { padding: 80px 5%; }
-    .home-content h1 { font-size: 2rem; }
-    .home-content h3 { font-size: 1.2rem; }
-    .home-content p { font-size: 0.9rem; }
-    .about-text h2 { font-size: 2rem; }
-    .contact-text h2 { font-size: 2.5rem; }
-    .section-title { font-size: 2rem; }
-    .project-card, .skill-card { padding: 20px; }
-}
-
+/* Large phones / tablet portrait */
 @media (max-width: 768px) {
-    .cert-modal-content {
-        width: 95%;
-        max-width: 100%;
-    }
-    .cert-close {
-        top: 15px;
-        right: 20px;
-        font-size: 28px;
-    }
-    .prev, .next {
-        font-size: 26px;
-        padding: 10px;
-    }
+    section { padding: 90px 5% 60px; }
+    .project-grid, .skill-grid, .certificate-grid { gap: 20px; }
+    .proj-modal { padding: 1.5rem; max-height: 90vh; }
+    .cert-modal { padding: 70px 10px 20px; }
+    .cert-modal-content { width: 95%; max-width: 100%; }
+    .cert-close { top: 12px; right: 18px; font-size: 34px; }
 }
 
-@media (max-width: 480px) {
-    .cert-modal-content {
-        width: 98%;
-        border-radius: 6px;
-    }
-}
-
-/* Responsive design for box of home ans about section */
+/* Phones */
 @media (max-width: 576px) {
-    .home-content p,
-    .about-text p {
-        padding: 15px;
-        font-size: 0.95rem;
-    }
+    .header { padding: 14px 5%; }
+    .logo { font-size: 1.5rem; }
+    section { padding: 80px 5% 50px; }
+    .home { padding-top: 100px; }
+    .home-image img { width: min(55vw, 220px); }
+    .home-content p, .about-text p { padding: 15px; font-size: .95rem; }
+    .about-text h4 { font-size: 1.4rem; }
+
+    .project-grid, .skill-grid, .certificate-grid { grid-template-columns: 1fr; }
+    .project-card, .skill-card, .certificate-card { padding: 22px 18px; }
+
+    .contact-form input, .contact-form textarea { font-size: 16px; padding: 14px; }
+    .contact-form .btn { width: 100%; text-align: center; }
+    .contact-list li { font-size: 1rem; }
+    .contact-text p { font-size: 1rem; }
+
+    .proj-overlay { padding: 10px; }
+    .proj-modal { padding: 1.2rem; border-radius: 14px; }
+    .proj-modal h2 { font-size: 1.25rem; padding-right: 28px; }
+    .proj-desc { font-size: .9rem; }
+    .proj-gallery.mobile-frame { min-height: 360px; }
+    .proj-gallery img.mobile-view { max-width: 180px; max-height: 340px; }
+    .proj-gallery img.active:not(.mobile-view) { max-height: 200px; }
+    .btn-github { width: 100%; text-align: center; }
+
+    .prev, .next { font-size: 24px; padding: 8px; background: rgba(0,0,0,.4); }
+    .prev { left: 6px; } .next { right: 6px; }
+
+    .toast { width: calc(100% - 32px); max-width: 420px; border-radius: 16px; bottom: 16px; }
+    .scroll-top { bottom: 16px; right: 16px; font-size: 1.6rem; }
+    .footer { font-size: .85rem; }
+}
+
+@media (max-width: 360px) {
+    .home-content p, .about-text p { padding: 12px; font-size: .9rem; }
+    .navbar a { font-size: 1.1rem; }
+}
+
+/* Phones in landscape */
+@media (max-height: 500px) and (orientation: landscape) {
+    .home { min-height: auto; padding-top: 100px; }
+    .navbar { max-height: calc(100vh - 60px); }
+    .proj-modal { max-height: 94vh; }
+    .cert-modal-content { max-height: 70vh; }
+}
+
+@supports (padding: max(0px)) {
+    .scroll-top { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: .01ms !important; animation-delay: 0s !important; scroll-behavior: auto !important; }
 }
 </style>
+</head>
 
 <body class="dark">
     <header class="header">
         <a href="#home" class="logo">Suniga</a>
-        <button id="toggle-btn" aria-label="Menu">
-            <i class="bx bx-menu"></i>
-        </button>
+        <button id="toggle-btn" aria-label="Menu"><i class="bx bx-menu"></i></button>
         <nav class="navbar">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
@@ -854,7 +284,7 @@ section {
         </div>
     </section>
 
-<!-- ── Projects Section ── -->
+    <!-- ── Projects ── -->
     <section class="projects" id="projects">
         <h2 class="section-title">My <span>Projects</span></h2>
         <div class="project-grid">
@@ -894,19 +324,14 @@ section {
     <!-- ── Project Detail Modal ── -->
     <div class="proj-overlay" id="proj-overlay" onclick="handleProjOverlay(event)">
         <div class="proj-modal" id="proj-modal">
-            <button class="proj-modal-close" onclick="closeProjModal()">&#215;</button>
-
-            <!-- Image gallery -->
+            <button class="proj-modal-close" onclick="closeProjModal()" aria-label="Close">&#215;</button>
             <div class="proj-gallery" id="proj-gallery"></div>
             <div class="gallery-dots" id="gallery-dots"></div>
-
             <h2 id="proj-title"></h2>
             <div class="proj-tech" id="proj-tech"></div>
             <p class="proj-desc" id="proj-desc"></p>
             <div class="proj-actions">
-                <a id="proj-github" class="btn-github" href="#" target="_blank" rel="noopener">
-                    <i class="bx bxl-github"></i> View on GitHub
-                </a>
+                <a id="proj-github" class="btn-github" href="#" target="_blank" rel="noopener"><i class="bx bxl-github"></i> View on GitHub</a>
             </div>
         </div>
     </div>
@@ -915,24 +340,10 @@ section {
     <section class="skills" id="skills">
         <h2 class="section-title">My <span>Skills</span></h2>
         <div class="skill-grid">
-            <div class="skill-card">
-                <i class="bx bxl-html5"></i>
-                <h3>HTML</h3>
-            </div>
-            <div class="skill-card">
-                <i class="bx bxl-java"></i>
-                <h3>Web Development</h3>
-                <h4>Front-end &amp; Back-end</h4>
-            </div>
-            <div class="skill-card">
-                <i class="bx bxl-android"></i>
-                <h3>Android Studio</h3>
-                <h4>Kotlin</h4>
-            </div>
-            <div class="skill-card">
-                <i class="bx bx-atom"></i>
-                <h3>ReactJS</h3>
-            </div>
+            <div class="skill-card"><i class="bx bxl-html5"></i><h3>HTML</h3></div>
+            <div class="skill-card"><i class="bx bxl-java"></i><h3>Web Development</h3><h4>Front-end &amp; Back-end</h4></div>
+            <div class="skill-card"><i class="bx bxl-android"></i><h3>Android Studio</h3><h4>Kotlin</h4></div>
+            <div class="skill-card"><i class="bx bx-atom"></i><h3>ReactJS</h3></div>
         </div>
     </section>
 
@@ -971,7 +382,7 @@ section {
     <!-- ── Certificate Image Modal ── -->
     <div id="certModal" class="cert-modal">
         <span class="cert-close">&times;</span>
-        <img class="cert-modal-content" id="certModalImg">
+        <img class="cert-modal-content" id="certModalImg" alt="Certificate">
         <a class="prev">&#10094;</a>
         <a class="next">&#10095;</a>
     </div>
@@ -993,7 +404,7 @@ section {
             </div>
         </div>
         <div class="contact-form">
-            <form action="https://api.web3forms.com/submit" method="POST">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="cae9d0cb-b65c-40a9-9d50-64fea31730d6">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1009,283 +420,245 @@ section {
     </section>
 
     <div class="toast" id="toast">
-                <i class="bx" id="toast-icon"></i>
-                <span id="toast-msg"></span>
-            </div>
+        <i class="bx" id="toast-icon"></i>
+        <span id="toast-msg"></span>
+    </div>
 
     <footer class="footer">
         <p>© <script>document.write(new Date().getFullYear());</script> Suniga. All rights reserved.</p>
         <a href="#home" class="scroll-top" aria-label="Scroll to top"><i class="bx bx-up-arrow-alt"></i></a>
     </footer>
 
-    <script>
-    // ── Typed.js ──
-    const typedElement = document.querySelector('.typed-text');
-    if (typedElement) {
-        new Typed('.typed-text', {
-            strings: ['Web Developer','Frontend','Computer Security' ,'Cloud Programming'],
-            typeSpeed: 100,
-            backSpeed: 50,
-            loop: true
-        });
-    }
+<script>
+// ── Typed.js ──
+if (document.querySelector('.typed-text') && window.Typed) {
+    new Typed('.typed-text', {
+        strings: ['Web Developer', 'Frontend', 'Computer Security', 'Cloud Programming'],
+        typeSpeed: 100, backSpeed: 50, loop: true
+    });
+}
 
-    // ── Navbar toggle ──
-    const toggleBtn = document.getElementById('toggle-btn');
-    const navbar = document.querySelector('.navbar');
-    if (toggleBtn && navbar) {
-        toggleBtn.addEventListener('click', () => navbar.classList.toggle('active'));
-    }
+// ── Navbar toggle ──
+const toggleBtn = document.getElementById('toggle-btn');
+const navbar = document.querySelector('.navbar');
+if (toggleBtn && navbar) toggleBtn.addEventListener('click', () => navbar.classList.toggle('active'));
 
-    // ── Smooth scrolling + Active Nav Highlight ──
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.navbar a');
+// ── Smooth scrolling + active nav ──
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.navbar a');
 
-    // Highlight on click
-    navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
         e.preventDefault();
-        
-        // Remove active from all, add to clicked
         navLinks.forEach(l => l.classList.remove('active'));
         this.classList.add('active');
-
-        const targetId = this.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
+        const target = document.getElementById(this.getAttribute('href').substring(1));
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
             if (navbar) navbar.classList.remove('active');
-            }
-        });
-    });
-
-// Highlight on scroll
-window.addEventListener('scroll', () => {
-    let current = '';
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
         }
     });
 });
 
-    // ── Scroll to top ──
-    const scrollTop = document.querySelector('.scroll-top');
-    if (scrollTop) {
-        window.addEventListener('scroll', () => {
-            scrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
-        });
-    }
-
-    
-    // ── Certificate Image Modal ──
-    const certModal = document.getElementById("certModal");
-    const certModalImg = document.getElementById("certModalImg");
-    const certCloseBtn = document.querySelector(".cert-close");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
-
-    const certImages = Array.from(document.querySelectorAll(".view-btn")).map(btn => btn.dataset.img);
-    let certCurrentIndex = 0;
-
-    document.querySelectorAll(".view-btn").forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-            certModal.style.display = "block";
-            certModalImg.src = btn.dataset.img;
-            certCurrentIndex = index;
-        });
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
     });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+    });
+});
 
-    function showCertImage(index) {
-        if (index < 0) index = certImages.length - 1;
-        if (index >= certImages.length) index = 0;
+// ── Scroll to top ──
+const scrollTop = document.querySelector('.scroll-top');
+if (scrollTop) {
+    window.addEventListener('scroll', () => {
+        scrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+}
+
+// ── Certificate image modal ──
+const certModal = document.getElementById('certModal');
+const certModalImg = document.getElementById('certModalImg');
+const certCloseBtn = document.querySelector('.cert-close');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const certImages = Array.from(document.querySelectorAll('.view-btn')).map(btn => btn.dataset.img);
+let certCurrentIndex = 0;
+
+document.querySelectorAll('.view-btn').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        certModal.style.display = 'block';
+        certModalImg.src = btn.dataset.img;
         certCurrentIndex = index;
-        certModalImg.src = certImages[certCurrentIndex];
-    }
-
-    if (prevBtn) prevBtn.addEventListener("click", () => showCertImage(certCurrentIndex - 1));
-    if (nextBtn) nextBtn.addEventListener("click", () => showCertImage(certCurrentIndex + 1));
-    if (certCloseBtn) certCloseBtn.addEventListener("click", () => certModal.style.display = "none");
-    window.addEventListener("click", (e) => {
-        if (e.target === certModal) certModal.style.display = "none";
     });
+});
 
-    // ── Project Detail Modal ──
-    const projectData = {
-        enrollment: {
-            title: "Online Enrollment Form",
-            icon: "bx bx-code",
-            images: ["img/online-enrollment.png"],  
-            tech: ["Visual Studio Code", "HTML", "CSS", "JavaScript", "PHP"],
-            desc: "A full-featured web application built for Upang College that allows students to enroll online. The system supports document and file submission, real-time messaging between students and administrators, and streamlines the entire enrollment workflow digitally eliminating the need for students to visit campus just to enroll.",
-            github: "https://github.com/s-richie/online_enrollment_form"
-        },
-        dama: {
-            title: "Dama Master",
-            icon: "bx bxs-dama",
-            images: ["img/dama.png"],  
-            tech: ["Java", "Netbeans IDE", "Figma"],
-            desc: "A two-player dama application that enforces all standard dama rules from castling to en passant. It tracks game results including winners, losers, and cumulative scores, making it great for competitive play between two users on the same device.",
-            github: "https://github.com/s-richie/dama-master"
-        },
-        venuevista: {
-            title: "VenueVista",
-            icon: "bx bxs-book",
-            images: ["img/mobile1.jpg", "img/mobile2.jpg", "img/mobile3.jpg"],  
-            mobile: true,   // ← add this flag
-            tech: ["Android", "Kotlin", "Firebase", "XML"],
-            desc: "An Android mobile app that simplifies event venue booking...",
-            github: "https://github.com/s-richie/venue-vista-mobile"
-        },
-        fetchchill: {
-            title: "Fetch&Chill",
-            icon: "bx bxs-dog",
-            images: ["img/fetchill2.png", "img/fetchill1.png"],  
-            tech: ["HTML", "CSS", "JavaScript", "PHP"],
-            desc: "A dedicated mobile app for pet parents to keep track of their pets' health records, grooming schedules, vet appointments, and wellness milestones all in one convenient place. Built as both Frontend and Backend developer.",
-            github: "https://github.com/s-richie/FetchChill"
-        },
-        openpc: {
-            title: "OpenPC",
-            icon: "bx bxs-laptop",
-            images: ["img/openpc.png", "img/openpc2.png"],  
-            tech: ["Visual Studio Code", "MERN", "MongoDB"],
-            desc: "A web-based application system designed to assist computer laboratory auditors in effectively monitoring and managing computer units. The system provides real-time tracking of computer status, making lab audits faster, more accurate, and paperless.",
-            github: "https://github.com/s-richie/Open-Pc"
-        }
-    };
+function showCertImage(index) {
+    if (index < 0) index = certImages.length - 1;
+    if (index >= certImages.length) index = 0;
+    certCurrentIndex = index;
+    certModalImg.src = certImages[certCurrentIndex];
+}
 
-    let galleryIndex = 0;
-    let currentImages = [];
+if (prevBtn) prevBtn.addEventListener('click', () => showCertImage(certCurrentIndex - 1));
+if (nextBtn) nextBtn.addEventListener('click', () => showCertImage(certCurrentIndex + 1));
+if (certCloseBtn) certCloseBtn.addEventListener('click', () => certModal.style.display = 'none');
+window.addEventListener('click', e => { if (e.target === certModal) certModal.style.display = 'none'; });
 
-    function openProjModal(key) {
-        const p = projectData[key];
-        document.getElementById('proj-title').textContent = p.title;
-        document.getElementById('proj-desc').textContent = p.desc;
-        document.getElementById('proj-github').href = p.github;
+// Swipe left/right in the certificate lightbox (touch devices)
+let touchStartX = 0;
+certModal.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+certModal.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) showCertImage(certCurrentIndex + (dx < 0 ? 1 : -1));
+}, { passive: true });
 
-        // Tech badges
-        document.getElementById('proj-tech').innerHTML =
-            p.tech.map(t => `<span class="tech-badge">${t}</span>`).join('');
+// ── Project detail modal ──
+const projectData = {
+    enrollment: {
+        title: "Online Enrollment Form", icon: "bx bx-code",
+        images: ["img/online-enrollment.png"],
+        tech: ["Visual Studio Code", "HTML", "CSS", "JavaScript", "PHP"],
+        desc: "A full-featured web application built for Upang College that allows students to enroll online. The system supports document and file submission, real-time messaging between students and administrators, and streamlines the entire enrollment workflow digitally eliminating the need for students to visit campus just to enroll.",
+        github: "https://github.com/s-richie/online_enrollment_form"
+    },
+    dama: {
+        title: "Dama Master", icon: "bx bxs-dama",
+        images: ["img/dama.png"],
+        tech: ["Java", "Netbeans IDE", "Figma"],
+        desc: "A two-player dama application that enforces all standard dama rules from castling to en passant. It tracks game results including winners, losers, and cumulative scores, making it great for competitive play between two users on the same device.",
+        github: "https://github.com/s-richie/dama-master"
+    },
+    venuevista: {
+        title: "VenueVista", icon: "bx bxs-book",
+        images: ["img/mobile1.jpg", "img/mobile2.jpg", "img/mobile3.jpg"],
+        mobile: true,
+        tech: ["Android", "Kotlin", "Firebase", "XML"],
+        desc: "An Android mobile app that simplifies event venue booking...",
+        github: "https://github.com/s-richie/venue-vista-mobile"
+    },
+    fetchchill: {
+        title: "Fetch&Chill", icon: "bx bxs-dog",
+        images: ["img/fetchill2.png", "img/fetchill1.png"],
+        tech: ["HTML", "CSS", "JavaScript", "PHP"],
+        desc: "A dedicated mobile app for pet parents to keep track of their pets' health records, grooming schedules, vet appointments, and wellness milestones all in one convenient place. Built as both Frontend and Backend developer.",
+        github: "https://github.com/s-richie/FetchChill"
+    },
+    openpc: {
+        title: "OpenPC", icon: "bx bxs-laptop",
+        images: ["img/openpc.png", "img/openpc2.png"],
+        tech: ["Visual Studio Code", "MERN", "MongoDB"],
+        desc: "A web-based application system designed to assist computer laboratory auditors in effectively monitoring and managing computer units. The system provides real-time tracking of computer status, making lab audits faster, more accurate, and paperless.",
+        github: "https://github.com/s-richie/Open-Pc"
+    }
+};
 
-        // Gallery
-        const gallery = document.getElementById('proj-gallery');
-        const dotsWrap = document.getElementById('gallery-dots');
-        currentImages = p.images || [];
-        galleryIndex = 0;
+let galleryIndex = 0;
+let currentImages = [];
 
-        if (currentImages.length > 0) {
-            const mobileClass = p.mobile ? ' mobile-view' : '';
-            if (p.mobile) gallery.classList.add('mobile-frame');
-            else gallery.classList.remove('mobile-frame');
+function openProjModal(key) {
+    const p = projectData[key];
+    document.getElementById('proj-title').textContent = p.title;
+    document.getElementById('proj-desc').textContent = p.desc;
+    document.getElementById('proj-github').href = p.github;
+    document.getElementById('proj-tech').innerHTML = p.tech.map(t => `<span class="tech-badge">${t}</span>`).join('');
 
-        let imgs = currentImages.map((src, i) =>
-            `<img src="${src}" alt="${p.title} screenshot ${i+1}" class="${i === 0 ? 'active' : ''}${mobileClass}">`
+    const gallery = document.getElementById('proj-gallery');
+    const dotsWrap = document.getElementById('gallery-dots');
+    currentImages = p.images || [];
+    galleryIndex = 0;
+
+    if (currentImages.length > 0) {
+        const mobileClass = p.mobile ? ' mobile-view' : '';
+        gallery.classList.toggle('mobile-frame', !!p.mobile);
+
+        const imgs = currentImages.map((src, i) =>
+            `<img src="${src}" alt="${p.title} screenshot ${i + 1}" class="${i === 0 ? 'active' : ''}${mobileClass}">`
         ).join('');
 
-            let arrows = currentImages.length > 1
-                ? `<button class="gallery-prev" onclick="galleryNav(-1)">&#10094;</button>
-                   <button class="gallery-next" onclick="galleryNav(1)">&#10095;</button>`
-                : '';
+        const arrows = currentImages.length > 1
+            ? `<button class="gallery-prev" onclick="galleryNav(-1)" aria-label="Previous">&#10094;</button>
+               <button class="gallery-next" onclick="galleryNav(1)" aria-label="Next">&#10095;</button>`
+            : '';
 
-            gallery.innerHTML = imgs + arrows;
-
-            // dots
-            dotsWrap.innerHTML = currentImages.length > 1
-                ? currentImages.map((_, i) =>
-                    `<button class="gallery-dot ${i === 0 ? 'active' : ''}" onclick="galleryGoTo(${i})"></button>`
-                  ).join('')
-                : '';
-        } else {
-            gallery.innerHTML = `
-                <div class="proj-gallery-placeholder">
-                    <i class="${p.icon}"></i>
-                    <span>Screenshots coming soon</span>
-                </div>`;
-            dotsWrap.innerHTML = '';
-        }
-
-        document.getElementById('proj-overlay').classList.add('open');
-        document.body.style.overflow = 'hidden';
+        gallery.innerHTML = imgs + arrows;
+        dotsWrap.innerHTML = currentImages.length > 1
+            ? currentImages.map((_, i) => `<button class="gallery-dot ${i === 0 ? 'active' : ''}" onclick="galleryGoTo(${i})" aria-label="Image ${i + 1}"></button>`).join('')
+            : '';
+    } else {
+        gallery.classList.remove('mobile-frame');
+        gallery.innerHTML = `<div class="proj-gallery-placeholder"><i class="${p.icon}"></i><span>Screenshots coming soon</span></div>`;
+        dotsWrap.innerHTML = '';
     }
 
-    function galleryNav(dir) {
-        galleryGoTo(galleryIndex + dir);
-    }
+    document.getElementById('proj-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
 
-    function galleryGoTo(index) {
-        const imgs = document.querySelectorAll('#proj-gallery img');
-        const dots = document.querySelectorAll('.gallery-dot');
-        if (!imgs.length) return;
-        if (index < 0) index = imgs.length - 1;
-        if (index >= imgs.length) index = 0;
-        imgs[galleryIndex].classList.remove('active');
-        if (dots[galleryIndex]) dots[galleryIndex].classList.remove('active');
-        galleryIndex = index;
-        imgs[galleryIndex].classList.add('active');
-        if (dots[galleryIndex]) dots[galleryIndex].classList.add('active');
-    }
+function galleryNav(dir) { galleryGoTo(galleryIndex + dir); }
 
-    function closeProjModal() {
-        document.getElementById('proj-overlay').classList.remove('open');
-        document.body.style.overflow = '';
-    }
+function galleryGoTo(index) {
+    const imgs = document.querySelectorAll('#proj-gallery img');
+    const dots = document.querySelectorAll('.gallery-dot');
+    if (!imgs.length) return;
+    if (index < 0) index = imgs.length - 1;
+    if (index >= imgs.length) index = 0;
+    imgs[galleryIndex].classList.remove('active');
+    if (dots[galleryIndex]) dots[galleryIndex].classList.remove('active');
+    galleryIndex = index;
+    imgs[galleryIndex].classList.add('active');
+    if (dots[galleryIndex]) dots[galleryIndex].classList.add('active');
+}
 
-    function handleProjOverlay(e) {
-        if (e.target === document.getElementById('proj-overlay')) closeProjModal();
-    }
+function closeProjModal() {
+    document.getElementById('proj-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
 
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeProjModal();
-    });
+function handleProjOverlay(e) {
+    if (e.target === document.getElementById('proj-overlay')) closeProjModal();
+}
 
-    // ── Contact Form with Toast Notification ──
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjModal(); });
+
+// Swipe through project screenshots on touch devices
+(function () {
+    const gallery = document.getElementById('proj-gallery');
+    let startX = 0;
+    gallery.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; }, { passive: true });
+    gallery.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].screenX - startX;
+        if (Math.abs(dx) > 50 && currentImages.length > 1) galleryNav(dx < 0 ? 1 : -1);
+    }, { passive: true });
+})();
+
+// ── Contact form with toast ──
 const contactForm = document.getElementById('contact-form');
 const submitBtn = document.getElementById('submit-btn');
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
-    const toastMsg = document.getElementById('toast-msg');
-    const toastIcon = document.getElementById('toast-icon');
-
-    toastMsg.textContent = message;
+    document.getElementById('toast-msg').textContent = message;
     toast.className = `toast ${type}`;
-    toastIcon.className = `bx ${type === 'success' ? 'bx-check-circle' : 'bx-x-circle'}`;
-
+    document.getElementById('toast-icon').className = `bx ${type === 'success' ? 'bx-check-circle' : 'bx-x-circle'}`;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 4000);
 }
 
 if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        const formData = new FormData(contactForm);
-        formData.append('access_key', 'cae9d0cb-b65c-40a9-9d50-64fea31730d6');
-
         try {
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
+            const json = JSON.stringify(Object.fromEntries(new FormData(contactForm)));
             const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: json
             });
             const result = await response.json();
@@ -1300,13 +673,12 @@ if (contactForm) {
         } catch (err) {
             showToast('Network error. Please check your connection.', 'error');
             console.log(err);
-        }   
+        }
 
         submitBtn.textContent = 'Send Message';
         submitBtn.disabled = false;
-        });
-    }
-    </script>
-
+    });
+}
+</script>
 </body>
 </html>
