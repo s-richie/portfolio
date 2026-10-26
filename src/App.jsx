@@ -123,17 +123,17 @@ const CERTS = [
   },
   {
     title: 'AI Governance, Risk and Compliances',
-    img: '/img/cert6.png',
+    img: '/img/cert7.png',
     desc: 'For successfully completing the AI Governance, Risk and Compliances certification from Appkademiya. Issued on October 23, 2026.',
   },
   {
     title: 'Beyond the Hack: How Cybersecurity Works in the Real World',
-    img: '/img/cert7.png',
+    img: '/img/cert8.png',
     desc: 'For actively participating in the "Beyond the Hack: How Cybersecurity Works in the Real World" online webinar by Appkademiya. Issued on October 24, 2026.',
   },
   {
     title: 'Cybersecurity in FinTech',
-    img: '/img/cert8.png',
+    img: '/img/cert6.png',
     desc: 'For actively participating in the "Cybersecurity in FinTech" online webinar by Appkademiya. Issued on October 25, 2026.',
   },
 ]
