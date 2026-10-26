@@ -14,13 +14,13 @@ img, video { max-width: 100%; height: auto; }
 section { padding: 100px 10%; min-height: auto; }
 
 /* ── Home ── */
-.home { display: flex; justify-content: center; align-items: center; min-height: 100vh; min-height: 100svh; padding: 20px; }
+.home { display: flex; justify-content: center; align-items: center; min-height: 100vh; min-height: 100svh; padding: 120px 20px 40px; }
 .home-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; width: 100%; gap: 20px; }
 .home-content { flex: 1; text-align: left; }
 .home-image { flex: 1; display: flex; justify-content: flex-end; }
 .home-image img { max-width: 400px; width: 100%; height: auto; border-radius: 10px; object-fit: cover; }
-.hello h3 { font-size: clamp(1.2rem, 4vw, 2rem); font-weight: 500; opacity: 0; animation: slideBottom 1s ease forwards; animation-delay: .5s;  }
-.home-content h3 { font-size: clamp(1.2rem, 4vw, 2rem); font-weight: 700; opacity: 0; animation: slideBottom 1s ease forwards; animation-delay: .7s; padding-top: 80px}
+.hello h3 { font-size: clamp(1.2rem, 4vw, 2rem); font-weight: 500; opacity: 0; animation: slideBottom 1s ease forwards; animation-delay: .5s; padding-top: 0; }
+.home-content h3 { font-size: clamp(1.2rem, 4vw, 2rem); font-weight: 700; opacity: 0; animation: slideBottom 1s ease forwards; animation-delay: .7s; }
 .home-content h1 { font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 700; margin: 10px 0; overflow-wrap: anywhere; opacity: 0; animation: slideTop 1s ease forwards; animation-delay: 1s; }
 .home-content p { font-size: 1.2rem; margin-bottom: 20px; opacity: 0; animation: slideLeft 1s ease forwards; animation-delay: 1.2s; background: #1a1a1a; padding: 20px; border: 1px solid #350101; border-left: 4px solid #971111; border-radius: 12px; line-height: 1.8; box-shadow: 0 5px 15px rgba(0,0,0,.3); }
 .typed-text { color: #971111; }
