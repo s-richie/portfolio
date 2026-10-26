@@ -288,7 +288,7 @@ function App() {
     <>
       {/* ── Header ── */}
       <header className="header">
-        <a href="#home" className="logo" onClick={(e) => goTo(e, 'home')}>Suniga</a>
+        <a href="#home" className="logo" onClick={(e) => goTo(e, 'home')}>My Portfolio</a>
         <button id="toggle-btn" aria-label="Menu" onClick={() => setMenuOpen((o) => !o)}>
           <i className="bx bx-menu"></i>
         </button>
