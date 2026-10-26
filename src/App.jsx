@@ -78,6 +78,21 @@ const SKILLS = [
   { icon: 'bxl-java', title: 'Web Development', sub: 'Front-end & Back-end' },
   { icon: 'bxl-android', title: 'Android Studio', sub: 'Kotlin' },
   { icon: 'bx-atom', title: 'ReactJS' },
+  { icon: 'bxl-css3', title: 'CSS' },
+  { icon: 'bxl-javascript', title: 'JavaScript' },
+  { icon: 'bxl-php', title: 'PHP' },
+  { icon: 'bxl-python', title: 'Python' },
+  { icon: 'bxl-mongodb', title: 'MERN Stack', sub: 'MongoDB, Express.js, React, Node.js' },
+  { icon: 'bx-data', title: 'MySQL', sub: 'Database Management' },
+  { icon: 'bx-server', title: 'Backend Development' },
+  { icon: 'bxl-git', title: 'Git' },
+  { icon: 'bxl-github', title: 'GitHub' },
+  { icon: 'bxl-visual-studio', title: 'Visual Studio Code' },
+  { icon: 'bx-layout', title: 'UI/UX' },
+  { icon: 'bx-palette', title: 'Digital Art' },
+  { icon: 'bx-wrench', title: 'Troubleshooting' },
+  { icon: 'bx-bulb', title: 'Problem Solving' },
+  { icon: 'bx-group', title: 'Teamwork' },
 ]
 
 const CERTS = [
@@ -103,8 +118,23 @@ const CERTS = [
   },
   {
     title: 'Certified Cybersecurity Professional (CCP)',
-    img: '/img/cert1.png',
+    img: '/img/cert5.png',
     desc: 'For successfully completing the Certified Cybersecurity Professional (CCP) certification module from Appkademiya. Issued on October 19, 2026 and digitally verified.',
+  },
+  {
+    title: 'AI Governance, Risk and Compliances',
+    img: '/img/cert6.png',
+    desc: 'For successfully completing the AI Governance, Risk and Compliances certification from Appkademiya. Issued on October 23, 2026.',
+  },
+  {
+    title: 'Beyond the Hack: How Cybersecurity Works in the Real World',
+    img: '/img/cert7.png',
+    desc: 'For actively participating in the "Beyond the Hack: How Cybersecurity Works in the Real World" online webinar by Appkademiya. Issued on October 24, 2026.',
+  },
+  {
+    title: 'Cybersecurity in FinTech',
+    img: '/img/cert8.png',
+    desc: 'For actively participating in the "Cybersecurity in FinTech" online webinar by Appkademiya. Issued on October 25, 2026.',
   },
 ]
 
@@ -397,7 +427,7 @@ function App() {
         </div>
       </section>
 
-      {/* ── Certificates (title only; description shows in the popup) ── */}
+      {/* ── Certificates  */}
       <section className="certificates" id="certificates">
         <h2 className="section-title">My <span>Certificates</span></h2>
         <div className="certificate-grid">
