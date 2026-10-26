@@ -305,7 +305,7 @@ function App() {
       <section className="home" id="home">
         <div className="home-container">
           <div className="home-content">
-            <h3>Hello, I'm</h3>
+            <h3 className="hello">Hello, I'm</h3>
             <h1>Richelle Suniga</h1>
             <h3>A <span className="typed-text" ref={typedRef}></span></h3>
             <p>I am a Cyber Security student with a strong interest in backend development, web technologies, and secure application development. I have experience building web and mobile applications using HTML, ReactJS, Kotlin, and Android Studio. Passionate about continuous learning, I enjoy solving problems, exploring new technologies, and creating practical solutions that deliver meaningful user experiences.</p>
