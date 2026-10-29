@@ -77,7 +77,7 @@ const SKILLS = [
   { icon: 'bxl-html5', title: 'HTML' },
   { icon: 'bxl-java', title: 'Web Development', sub: 'Front-end & Back-end' },
   { icon: 'bxl-android', title: 'Android Studio', sub: 'Kotlin' },
-  { icon: 'bx-atom', title: 'ReactJS' },
+  { icon: 'bx-atom', title: 'ReactVite' },
   { icon: 'bxl-css3', title: 'CSS' },
   { icon: 'bxl-javascript', title: 'JavaScript' },
   { icon: 'bxl-php', title: 'PHP' },
